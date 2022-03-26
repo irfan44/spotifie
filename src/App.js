@@ -1,11 +1,9 @@
-import "./App.css";
-import Track from "./components/Track";
-import data from "./data/single-sample";
+import Main from "./pages";
 
 function App() {
   return (
     <div className="App">
-      <Track data={data} />
+      <Main />
     </div>
   );
 }
