@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import SearchBar from "../../components/Home/SearchBar";
 import TrackCard from "../../components/Home/TrackCard";
+import TrackRow from "../../components/Home/TrackRow";
 import getSearchTracks from "../../data/spotify/search-api-call";
 
 const Home = () => {
@@ -36,7 +37,8 @@ const Home = () => {
     return (
       tracks.length !== 0 &&
       tracks.map((track) => {
-        return <TrackCard key={track.id} track={track} />;
+        // return <TrackCard key={track.id} track={track} />; //card layout
+        return <TrackRow key={track.id} track={track} />; //row layout
       })
     );
   };
@@ -63,9 +65,12 @@ const Home = () => {
           handleOnClick={handleSearchClick}
           handleOnChange={handleSearchInput}
         />
-        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
+        {/* Card layout */}
+        {/* <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
           {fetchTrackData()}
-        </div>
+        </div> */}
+        {/* Grid layout */}
+        <div className="space-y-2 mt-4">{fetchTrackData()}</div>
       </div>
     </>
   );

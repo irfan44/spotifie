@@ -1,7 +1,7 @@
 import Button from "../../common/Button";
 import Image from "../../common/Image";
 
-const PlaylistTrack = ({ track }) => {
+const TrackRow = ({ track }) => {
   return (
     <div className="grid grid-cols-[4fr_2fr_minmax(120px,1fr)] gap-x-2 p-2 hover:bg-zinc-800 hover:rounded-lg">
       <div className="flex items-center space-x-2">
@@ -26,4 +26,4 @@ const PlaylistTrack = ({ track }) => {
     </div>
   );
 };
-export default PlaylistTrack;
+export default TrackRow;
