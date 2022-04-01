@@ -1,7 +1,14 @@
 import Button from "../../common/Button";
-import Image from "../../common/Image";
+import { useState } from "react";
 
-const PlaylistTrack = ({ track }) => {
+const SelectTrack = ({ track, handleSelectTrack, select }) => {
+  const [selected, setSelected] = useState(select);
+
+  const handleSelectButton = () => {
+    setSelected(!selected);
+    handleSelectTrack();
+  };
+
   return (
     <div className="grid grid-cols-[4fr_2fr_minmax(120px,1fr)] gap-x-2 p-2 hover:bg-zinc-800 hover:rounded-lg">
       <div className="flex items-center space-x-2">
@@ -21,9 +28,13 @@ const PlaylistTrack = ({ track }) => {
         <h3>{track.albumName}</h3>
       </div>
       <div className="mx-auto flex items-center">
-        <Button text="Select" />
+        <Button
+          text={selected ? "Deselect" : "Select"}
+          onClick={handleSelectButton}
+          type={selected ? "secondary" : "primary"}
+        />
       </div>
     </div>
   );
 };
-export default PlaylistTrack;
+export default SelectTrack;

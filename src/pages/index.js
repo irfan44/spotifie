@@ -1,9 +1,9 @@
-import Home from "./Home";
+import Playlist from "./Playlist";
 
 const Main = () => {
   return (
     <div>
-      <Home />
+      <Playlist />
     </div>
   );
 };
