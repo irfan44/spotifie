@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SearchBar from "../../components/Home/SearchBar";
+import SearchBar from "../../components/Playlist/SearchBar";
 import SelectTrack from "../../components/Playlist/SelectTrack";
 import getSearchTracks from "../../data/spotify/search-api-call";
 
