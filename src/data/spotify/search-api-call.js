@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const getSearchTracks = async (query, token) => {
-  const header = `Authorization: Bearer ${token}`;
   const onFetchSuccess = (response) => {
     let searchResult = response.data.tracks.items;
     let tracks = [];

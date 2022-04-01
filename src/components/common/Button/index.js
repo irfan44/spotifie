@@ -1,7 +1,13 @@
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, type }) => {
   return (
     <button
-      className="bg-green-500 py-2 px-5 rounded-lg text-white font-bold"
+      className={
+        type === "primary"
+          ? "border py-2 px-5 rounded-full text-white font-bold"
+          : type === "secondary"
+          ? "bg-white py-2 px-5 rounded-full text-black font-bold"
+          : "border py-2 px-5 rounded-full text-white font-bold"
+      }
       onClick={onClick}
     >
       {text}
