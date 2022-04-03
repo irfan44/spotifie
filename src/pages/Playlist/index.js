@@ -91,7 +91,7 @@ const Playlist = () => {
     setCreatePlaylistForm({ name: "", description: "" });
     setSelectedTracksUri([]);
     setTracks([]);
-    if (checkInputs()) {
+    if (checkInputs() && selectedTracksUri.length > 0) {
       try {
         let fetchData = await fetchUserData();
         let userid = fetchData.id;
@@ -105,6 +105,8 @@ const Playlist = () => {
       } catch (error) {
         alert(error);
       }
+    } else {
+      alert("Please select at least 1 track or fill the form");
     }
   };
 
