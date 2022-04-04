@@ -11,7 +11,7 @@ const getUserData = async (token) => {
     };
   };
   return axios
-    .get(endpointURL, { params: { access_token: token } })
+    .get(endpointURL, { params: { access_token: token.token } })
     .then((response) => onFetchSuccess(response));
 };
 
