@@ -18,7 +18,7 @@ const postCreatePlaylist = async (userID, data, token) => {
   return axios
     .post(endpointURL, bodyParams, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token.token}`,
       },
     })
     .then((response) => onPostSuccess(response));

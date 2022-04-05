@@ -8,9 +8,11 @@ import postAddItemsToPlaylist from "../../data/spotify/post-add-items-to-playlis
 import postCreatePlaylist from "../../data/spotify/post-create-playlist";
 import Login from "../Login";
 
+import { useDispatch, useSelector } from 'react-redux'
+import { setToken } from "../../redux/reducer/token-reducer";
+
 const Playlist = () => {
   const [auth, setAuth] = useState(false);
-  const [token, setToken] = useState(null);
   const [tracks, setTracks] = useState([]);
   const [selectedTracksUri, setSelectedTracksUri] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -20,6 +22,9 @@ const Playlist = () => {
     description: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.token);
 
   // User
   const fetchUserData = async () => {
@@ -146,13 +151,14 @@ const Playlist = () => {
     let url = window.location.hash.substring(1);
     let searchParams = new URLSearchParams(url);
     let accessToken = searchParams.get("access_token");
-    setToken(accessToken);
+    dispatch(setToken(accessToken));
+    // setToken(accessToken);
     accessToken !== null && setAuth(true);
   };
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  });
 
   return (
     <>

@@ -25,7 +25,7 @@ const getSearchTracks = async (query, token) => {
 
   return axios
     .get("https://api.spotify.com/v1/search", {
-      params: { q: query, type: "track", access_token: token },
+      params: { q: query, type: "track", access_token: token.token },
     })
     .then((response) => onFetchSuccess(response));
 };
