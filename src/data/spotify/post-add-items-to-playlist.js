@@ -14,7 +14,7 @@ const postAddItemsToPlaylist = async (playlistID, token, selectedTracksUri) => {
   return axios
     .post(endpointURL, bodyParams, {
       headers: {
-        Authorization: `Bearer ${token.token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
     .then(onPostSuccess);

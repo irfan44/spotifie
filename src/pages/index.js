@@ -1,9 +1,12 @@
-import Playlist from "./Playlist";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRouter from "../router";
 
 const Main = () => {
   return (
     <div>
-      <Playlist />
+      <Router>
+        <AppRouter />
+      </Router>
     </div>
   );
 };
