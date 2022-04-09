@@ -1,7 +1,7 @@
 import Button from "../../common/Button";
 import { useState } from "react";
 
-const SelectTrack = ({ track, handleSelectTrack, select }) => {
+const TrackRow = ({ track, handleSelectTrack, select }) => {
   const [selected, setSelected] = useState(select);
 
   const handleSelectButton = () => {
@@ -31,10 +31,10 @@ const SelectTrack = ({ track, handleSelectTrack, select }) => {
         <Button
           text={selected ? "Deselect" : "Select"}
           onClick={handleSelectButton}
-          type={selected ? "secondary" : "primary"}
+          variant={selected ? "secondary" : "primary"}
         />
       </div>
     </div>
   );
 };
-export default SelectTrack;
+export default TrackRow;

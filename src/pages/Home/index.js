@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { setToken } from "../../redux/reducer/token-reducer";
+import { setUserProfile } from "../../redux/reducer/user-profile-reducer";
 import Login from "../Login";
 import IsLogin from "../../utils/isLogin";
-import { useHistory } from "react-router-dom";
+import getUserData from "../../data/spotify/get-user-data";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -15,6 +17,21 @@ const Home = () => {
     let searchParams = new URLSearchParams(url);
     let accessToken = searchParams.get("access_token");
     dispatch(setToken(accessToken));
+    accessToken !== null && fetchUserProfile(accessToken);
+  };
+
+  const fetchUserProfile = async (accessToken) => {
+    try {
+      let data = await getUserData(accessToken);
+      dispatch(
+        setUserProfile({
+          id: data.id,
+          displayName: data.name,
+        })
+      );
+    } catch (error) {
+      alert(error);
+    }
   };
 
   useEffect(() => {

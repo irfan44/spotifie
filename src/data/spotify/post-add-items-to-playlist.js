@@ -9,6 +9,7 @@ const postAddItemsToPlaylist = async (playlistID, token, selectedTracksUri) => {
   const onPostSuccess = (response) => {
     return {
       playlist_id: response,
+      message: "Successfully added tracks to playlist",
     };
   };
   return axios
