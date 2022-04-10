@@ -1,107 +1,107 @@
 import { useState } from "react";
-import CreatePlaylistForm from "../../components/CreatePlaylistForm";
-import SearchBar from "../../components/Playlist/SearchBar";
-import SelectTrack from "../../components/Playlist/SelectTrack";
+import { useSelector } from "react-redux";
+import CreatePlaylistForm from "../../components/CreatePlaylist/CreatePlaylistForm";
+import SearchBar from "../../components/CreatePlaylist/SearchBar";
+import TrackRow from "../../components/CreatePlaylist/TrackRow";
 import getSearchTracks from "../../data/spotify/get-search-tracks";
-import getUserData from "../../data/spotify/get-user-data";
 import postAddItemsToPlaylist from "../../data/spotify/post-add-items-to-playlist";
 import postCreatePlaylist from "../../data/spotify/post-create-playlist";
-import { useSelector } from "react-redux";
+import checkLength from "../../utils/checkLength";
 
 const CreatePlaylist = () => {
   const [tracks, setTracks] = useState([]);
   const [selectedTracksUri, setSelectedTracksUri] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-
   const [createPlaylistForm, setCreatePlaylistForm] = useState({
     name: "",
     description: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-
   const token = useSelector((state) => state.token.token);
+  const userId = useSelector((state) => state.userProfile.id);
 
-  // User
-  const fetchUserData = async () => {
-    try {
-      let response = await getUserData(token);
-      return response;
-    } catch (error) {
-      alert(error);
-    }
-  };
-
-  // Search
   const handleSearchClick = () => {
     fetchSearchTracks();
   };
 
-  const handleSearchInput = (e) => {
-    setSearchInput(e.target.value);
+  const handleSearchInput = (event) => {
+    setSearchInput(event.target.value);
   };
 
   const fetchSearchTracks = async () => {
     try {
-      let response = await getSearchTracks(searchInput, token);
-      fetchSearchTracksWithSelected(response);
+      let searchResult = await getSearchTracks(searchInput, token);
+      fetchSearchTracksWithSelected(searchResult);
     } catch (error) {
       alert(error);
     }
   };
 
-  const fetchSearchTracksWithSelected = (searchTracks) => {
-    const filteredTracks = filterTracks();
-    const distincTracks = searchTracks.filter(
-      (track) => !selectedTracksUri.includes(track.uri)
-    );
-    setTracks([...filteredTracks, ...distincTracks]);
+  const handleSelectTrack = (trackSelect) => {
+    let URI = trackSelect.uri;
+    if (selectedTracksUri.includes(URI)) {
+      setSelectedTracksUri(selectedTracksUri.filter((item) => item !== URI));
+    } else {
+      setSelectedTracksUri([...selectedTracksUri, URI]);
+    }
   };
 
   const filterTracks = () => {
     return tracks.filter((track) => selectedTracksUri.includes(track.uri));
   };
 
-  // Select track
-  const handleSelectTrack = (trackSelect) => {
-    let uri = trackSelect.uri;
-    if (selectedTracksUri.includes(uri)) {
-      setSelectedTracksUri(selectedTracksUri.filter((item) => item !== uri));
-    } else {
-      setSelectedTracksUri([...selectedTracksUri, uri]);
-    }
-  };
-
-  // Create playlist form
-  const handleFormInputs = (e) => {
-    const { name, value } = e.target;
-    setCreatePlaylistForm({ ...createPlaylistForm, [name]: value });
-    if (createPlaylistForm.name.length < 10) {
-      setErrorMessage("Enter 10 or more characters");
-    } else {
-      setErrorMessage("");
-    }
+  const fetchSearchTracksWithSelected = (searchResult) => {
+    const filteredTracks = filterTracks();
+    const distincTracks = searchResult.filter(
+      (track) => !selectedTracksUri.includes(track.uri)
+    );
+    setTracks([...filteredTracks, ...distincTracks]);
   };
 
   const checkInputs = () => {
-    return createPlaylistForm.name.length >= 10;
+    return checkLength(">=", createPlaylistForm.name, 10);
   };
 
-  const handleCreatePlaylistForm = async (e) => {
-    e.preventDefault();
+  const setErrorFromInputs = () => {
+    if (checkInputs()) {
+      setErrorMessage("");
+    } else {
+      setErrorMessage("Enter 10 or more characters");
+    }
+  };
+
+  const resetForm = () => {
     setCreatePlaylistForm({ name: "", description: "" });
     setSelectedTracksUri([]);
     setTracks([]);
-    if (checkInputs() && selectedTracksUri.length > 0) {
+  };
+
+  const handleFormInputs = (event) => {
+    const { name, value } = event.target;
+    setCreatePlaylistForm({ ...createPlaylistForm, [name]: value });
+    setErrorFromInputs();
+  };
+
+  const createPlaylist = async () => {
+    try {
+      let createPlaylist = await postCreatePlaylist(
+        userId,
+        createPlaylistForm,
+        token
+      );
+      return createPlaylist.playlistID;
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const handleCreatePlaylistForm = async (event) => {
+    event.preventDefault();
+    if (checkInputs() && checkLength(">", selectedTracksUri, 0)) {
       try {
-        let fetchData = await fetchUserData();
-        let userid = fetchData.id;
-        let createPlaylist = await postCreatePlaylist(
-          userid,
-          createPlaylistForm,
-          token
-        );
-        let playlistID = createPlaylist.playlistID;
-        handleAddItemsToPlaylist(playlistID);
+        let playlistId = await createPlaylist();
+        handleAddItemsToPlaylist(playlistId);
+        resetForm();
       } catch (error) {
         alert(error);
       }
@@ -110,27 +110,25 @@ const CreatePlaylist = () => {
     }
   };
 
-  // Add tracks to playlist
-  const handleAddItemsToPlaylist = async (playlist_id) => {
+  const handleAddItemsToPlaylist = async (playlistId) => {
     try {
       let response = await postAddItemsToPlaylist(
-        playlist_id,
+        playlistId,
         token,
         selectedTracksUri
       );
-      console.log(response);
+      alert(response.message);
     } catch (error) {
       alert(error);
     }
   };
 
-  // Show track data
   const fetchTrackData = () => {
     return (
       tracks.length !== 0 &&
       tracks.map((track) => {
         return (
-          <SelectTrack
+          <TrackRow
             key={track.uri}
             track={track}
             handleSelectTrack={() => handleSelectTrack(track)}
@@ -145,7 +143,7 @@ const CreatePlaylist = () => {
     <>
       <div className="px-8 py-8">
         <div>
-          <h2 className="font-bold  text-xl mb-4">Create Playlist</h2>
+          <h2 className="font-bold text-xl mb-4">Create Playlist</h2>
           <CreatePlaylistForm
             handleSubmit={handleCreatePlaylistForm}
             handleOnChange={handleFormInputs}
@@ -162,4 +160,5 @@ const CreatePlaylist = () => {
     </>
   );
 };
+
 export default CreatePlaylist;

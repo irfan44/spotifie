@@ -1,3 +1,6 @@
+import Button from "../../common/Button";
+import Input from "../../common/Input";
+
 const CreatePlaylist = ({
   handleSubmit,
   handleOnChange,
@@ -11,12 +14,12 @@ const CreatePlaylist = ({
         onSubmit={handleSubmit}
       >
         <label htmlFor="name">Name</label>
-        <input
-          className="p-2 bg-zinc-800 rounded-lg text-white"
+        <Input
           id="name"
           name="name"
           value={value.name}
           onChange={handleOnChange}
+          placeholder="Insert playlist name"
         />
         <p className="text-sm text-red-600">{errorMessage}</p>
         <label htmlFor="desc">Description</label>
@@ -26,15 +29,12 @@ const CreatePlaylist = ({
           name="description"
           value={value.description}
           onChange={handleOnChange}
+          placeholder="Insert playlist description"
         />
-        <button
-          className="border py-2 px-5 rounded-full text-white font-bold"
-          type="submit"
-        >
-          Submit
-        </button>
+        <Button variant="primary" text="Create" type="submit" />
       </form>
     </>
   );
 };
+
 export default CreatePlaylist;
