@@ -1,0 +1,25 @@
+.track_card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid rgb(113 113 122);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.track_info {
+  margin-left: 2rem;
+}
+
+.track_info h3 {
+  margin-bottom: 0.75rem;
+}
+
+.track_info p {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.track_button {
+  margin-top: 1rem;
+}

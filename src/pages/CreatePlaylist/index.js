@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import "./index.css";
 import CreatePlaylistForm from "../../components/CreatePlaylist/CreatePlaylistForm";
 import SearchBar from "../../components/CreatePlaylist/SearchBar";
-import TrackRow from "../../components/CreatePlaylist/TrackRow";
+import TrackCard from "../../components/CreatePlaylist/TrackCard";
 import getSearchTracks from "../../data/spotify/get-search-tracks";
 import postAddItemsToPlaylist from "../../data/spotify/post-add-items-to-playlist";
 import postCreatePlaylist from "../../data/spotify/post-create-playlist";
@@ -128,7 +129,7 @@ const CreatePlaylist = () => {
       tracks.length !== 0 &&
       tracks.map((track) => {
         return (
-          <TrackRow
+          <TrackCard
             key={track.uri}
             track={track}
             handleSelectTrack={() => handleSelectTrack(track)}
@@ -141,9 +142,9 @@ const CreatePlaylist = () => {
 
   return (
     <>
-      <div className="px-8 py-8">
+      <div className="create_playlist_page">
         <div>
-          <h2 className="font-bold text-xl mb-4">Create Playlist</h2>
+          <h2 className="page_title">Create Playlist</h2>
           <CreatePlaylistForm
             handleSubmit={handleCreatePlaylistForm}
             handleOnChange={handleFormInputs}
@@ -154,7 +155,7 @@ const CreatePlaylist = () => {
             handleOnClick={handleSearchClick}
             handleOnChange={handleSearchInput}
           />
-          <div className="space-y-2 mt-4">{fetchTrackData()}</div>
+          <div className="track_card_list">{fetchTrackData()}</div>
         </div>
       </div>
     </>

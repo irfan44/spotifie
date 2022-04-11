@@ -1,0 +1,12 @@
+/* create css for class app with black background and white text */
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.app {
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+}

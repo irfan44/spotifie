@@ -1,8 +1,9 @@
+import "./App.css";
 import Main from "./pages";
 
 function App() {
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="app">
       <Main />
     </div>
   );

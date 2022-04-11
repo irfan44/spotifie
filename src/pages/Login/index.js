@@ -1,3 +1,5 @@
+import "./index.css";
+
 const Login = () => {
   let urlParams = {
     client_id: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
@@ -11,11 +13,8 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex justify-center">
-        <a
-          className="py-2 px-5 bg-green-500 text-center rounded-full"
-          href={authUrl}
-        >
+      <div className="login_page">
+        <a className="login_button" href={authUrl}>
           Login to Spotify
         </a>
       </div>

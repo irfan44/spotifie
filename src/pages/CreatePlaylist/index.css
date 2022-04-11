@@ -1,0 +1,17 @@
+.create_playlist_page {
+  padding: 2rem;
+}
+
+.page_title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.track_card_list {
+  display: grid;
+  margin-top: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
