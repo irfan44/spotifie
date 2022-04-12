@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Circular-Regular";
+  src: url("/public/fonts/CircularStd-Book.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Circular-Medium";
+  src: url("/public/fonts/CircularStd-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Circular-Bold";
+  src: url("/public/fonts/CircularStd-Bold.ttf") format("truetype");
+}
+
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.app {
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+}

@@ -1,12 +1,16 @@
-const Image = ({ imgUrl, title, width, height }) => {
+import Style from "./Image.module.css";
+
+const Image = ({ src, alt, width, height }) => {
   return (
-    <img
-      className="rounded-lg"
-      src={imgUrl}
-      alt={title}
-      width={width}
-      height={height}
-    />
+    <>
+      <img
+        className={Style.image}
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+      />
+    </>
   );
 };
 

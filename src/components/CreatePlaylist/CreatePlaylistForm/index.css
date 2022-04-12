@@ -1,0 +1,22 @@
+.create_playlist_form {
+  display: flex;
+  flex-direction: column;
+  max-width: 24rem;
+  margin-bottom: 2rem;
+  font-family: "Circular-Regular";
+}
+
+.form_input_group {
+  margin-bottom: 1rem;
+}
+
+.form_label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form_error {
+  color: red;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}

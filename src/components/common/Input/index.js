@@ -1,7 +1,8 @@
+import Style from "./Input.module.css";
 const Input = ({ id, name, value, onChange, placeholder }) => {
   return (
     <input
-      className="bg-zinc-800 rounded-lg p-2 text-white w-full"
+      className={Style.input}
       id={id}
       name={name}
       value={value}

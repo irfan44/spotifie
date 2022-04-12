@@ -1,0 +1,28 @@
+.button {
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  font-family: "Circular-Bold";
+}
+
+.primary {
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
+}
+
+.primary:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.secondary {
+  border: 1px solid #fff;
+  background-color: #fff;
+  color: #000;
+}
+
+.secondary:hover {
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
+}

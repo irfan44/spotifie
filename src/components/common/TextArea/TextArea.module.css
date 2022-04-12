@@ -1,0 +1,10 @@
+.text_area {
+  width: 100%;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: rgb(38 38 38);
+  resize: none;
+  font-family: "Circular-Regular";
+}
