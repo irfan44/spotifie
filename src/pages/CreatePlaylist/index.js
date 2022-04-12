@@ -151,6 +151,7 @@ const CreatePlaylist = () => {
             value={createPlaylistForm}
             errorMessage={errorMessage}
           />
+          <h2 className="page_title">Search Tracks</h2>
           <SearchBar
             handleOnClick={handleSearchClick}
             handleOnChange={handleSearchInput}

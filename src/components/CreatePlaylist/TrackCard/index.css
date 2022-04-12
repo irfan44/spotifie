@@ -13,11 +13,13 @@
 
 .track_info h3 {
   margin-bottom: 0.75rem;
+  font-family: "Circular-Bold";
 }
 
 .track_info p {
   margin-bottom: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
+  font-family: "Circular-Regular";
 }
 
 .track_button {
