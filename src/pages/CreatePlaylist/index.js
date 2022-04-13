@@ -22,7 +22,7 @@ const CreatePlaylist = () => {
   const userId = useSelector((state) => state.userProfile.id);
 
   const handleSearchClick = () => {
-    fetchSearchTracks();
+    searchInput !== "" ? fetchSearchTracks() : alert("Please enter a search");
   };
 
   const handleSearchInput = (event) => {
