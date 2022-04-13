@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import "./index.css";
+import "../../styles/CreatePlaylist/CreatePlaylist.css";
 import CreatePlaylistForm from "../../components/CreatePlaylist/CreatePlaylistForm";
 import SearchBar from "../../components/CreatePlaylist/SearchBar";
 import TrackCard from "../../components/CreatePlaylist/TrackCard";
-import getSearchTracks from "../../data/spotify/get-search-tracks";
-import postAddItemsToPlaylist from "../../data/spotify/post-add-items-to-playlist";
-import postCreatePlaylist from "../../data/spotify/post-create-playlist";
+import getSearchTracks from "../../api/get-search-tracks";
+import postAddItemsToPlaylist from "../../api/post-add-items-to-playlist";
+import postCreatePlaylist from "../../api/post-create-playlist";
 import checkLength from "../../utils/checkLength";
 
 const CreatePlaylist = () => {
@@ -22,7 +22,7 @@ const CreatePlaylist = () => {
   const userId = useSelector((state) => state.userProfile.id);
 
   const handleSearchClick = () => {
-    fetchSearchTracks();
+    searchInput !== "" ? fetchSearchTracks() : alert("Please enter a search");
   };
 
   const handleSearchInput = (event) => {

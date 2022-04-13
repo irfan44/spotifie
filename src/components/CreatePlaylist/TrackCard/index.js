@@ -1,4 +1,4 @@
-import "./index.css";
+import "../../../styles/CreatePlaylist/TrackCard.css";
 import Button from "../../common/Button";
 import { useState } from "react";
 import Image from "../../common/Image";

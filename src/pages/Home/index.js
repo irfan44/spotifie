@@ -5,7 +5,7 @@ import { setToken } from "../../redux/reducer/token-reducer";
 import { setUserProfile } from "../../redux/reducer/user-profile-reducer";
 import Login from "../Login";
 import IsLogin from "../../utils/isLogin";
-import getUserData from "../../data/spotify/get-user-data";
+import getUserData from "../../api/get-user-data";
 
 const Home = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import Style from "./TextArea.module.css";
+import Style from "../../../styles/common/TextArea.module.css";
 
 const TextArea = ({ id, name, value, onChange, placeholder }) => {
   return (

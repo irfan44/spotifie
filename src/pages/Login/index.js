@@ -1,4 +1,4 @@
-import "./index.css";
+import "../../styles/Login/Login.css";
 
 const Login = () => {
   let urlParams = {

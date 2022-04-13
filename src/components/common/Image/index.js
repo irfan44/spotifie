@@ -1,4 +1,4 @@
-import Style from "./Image.module.css";
+import Style from "../../../styles/common/Image.module.css";
 
 const Image = ({ src, alt, width, height }) => {
   return (
