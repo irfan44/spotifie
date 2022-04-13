@@ -1,4 +1,4 @@
-import "./index.css";
+import "../../../styles/CreatePlaylist/SearchBar.css";
 import Button from "../../common/Button";
 import Input from "../../common/Input";
 

@@ -1,4 +1,4 @@
-import "./index.css";
+import "../../../styles/CreatePlaylist/CreatePlaylistForm.css";
 import Button from "../../common/Button";
 import Input from "../../common/Input";
 import TextArea from "../../common/TextArea";

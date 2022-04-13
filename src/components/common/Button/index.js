@@ -1,4 +1,4 @@
-import Style from "./Button.module.css";
+import Style from "../../../styles/common/Button.module.css";
 
 const Button = ({ variant, text, onClick, type }) => {
   return (
