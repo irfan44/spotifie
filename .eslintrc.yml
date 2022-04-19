@@ -1,0 +1,29 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - airbnb
+  - plugin:prettier/recommended
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: latest
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+  - 'prettier'
+rules:
+  {
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+    'jsx-a11y/label-has-associated-control':
+      [2, { controlComponents: ['Input'] }],
+    'react/button-has-type': 'off',
+    'react/function-component-definition':
+      [2, { namedComponents: 'arrow-function' }],
+    'react/jsx-filename-extension':
+      [1, { extensions: ['.js', '.jsx', '.tsx'] }],
+    'react/react-in-jsx-scope': 'off',
+    'react/require-default-props': 'off',
+  }
