@@ -1,0 +1,34 @@
+import { ChangeEventHandler, FormEventHandler } from 'react';
+import Button from '../../common/Button';
+import Input from '../../common/Input';
+
+type Props = {
+  handleError: boolean;
+  value: string;
+  handleOnChange: ChangeEventHandler<HTMLInputElement>;
+  handleOnSubmit: FormEventHandler<HTMLFormElement>;
+};
+
+const SearchBar = ({
+  handleError,
+  value,
+  handleOnChange,
+  handleOnSubmit,
+}: Props) => {
+  const isError = handleError;
+
+  return (
+    <form className="flex space-x-2" onSubmit={handleOnSubmit}>
+      <Input
+        id="search"
+        isError={isError}
+        name="search"
+        placeholder="Search tracks here"
+        value={value}
+        handleOnChange={handleOnChange}
+      />
+      <Button primary title="Search" type="submit" />
+    </form>
+  );
+};
+export default SearchBar;
