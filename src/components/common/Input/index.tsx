@@ -21,7 +21,7 @@ const Input = ({
 
   return (
     <input
-      className={`p-2 bg-white rounded-xl w-full text-black ${variant}`}
+      className={`w-full rounded-xl bg-white p-2 text-black ${variant}`}
       id={id}
       name={name}
       placeholder={placeholder}

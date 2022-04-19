@@ -14,13 +14,13 @@ const TrackItems = ({ artistName, trackTitle, handleDeleteTrack }: Props) => {
   };
 
   return (
-    <div className=" p-2 hover:bg-zinc-800 hover:rounded-lg">
+    <div className="p-2 hover:rounded-lg hover:bg-zinc-800">
       <div className="flex items-center justify-between">
         <div className="w-3/4">
           <h5 className="truncate">{trackTitle}</h5>
-          <p className="text-sm truncate">{artistName}</p>
+          <p className="truncate text-sm">{artistName}</p>
         </div>
-        <div className="w-1/4 flex justify-center">
+        <div className="flex w-1/4 justify-center">
           <IconButton
             icon={<MdDelete />}
             title="Remove from list"

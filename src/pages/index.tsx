@@ -11,7 +11,7 @@ const Main = () => {
           <TopBar />
         </div>
         <div className="flex h-screen">
-          <div className="px-4 hidden lg:block">
+          <div className="hidden px-4 lg:block">
             <SideMenu />
           </div>
           <div className="grow px-4">
@@ -19,7 +19,7 @@ const Main = () => {
               <AppRouter />
             </div>
           </div>
-          <div className="px-4 hidden lg:block">
+          <div className="hidden px-4 lg:block">
             <SelectedTrackList />
           </div>
         </div>

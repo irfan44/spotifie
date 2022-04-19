@@ -31,7 +31,7 @@ const TopBar = () => {
   return (
     <div>
       {!isLogin && (
-        <div className="fixed bg-black container p-4">
+        <div className="container fixed bg-black p-4">
           <div className="grid grid-cols-2">
             <div className="flex items-center space-x-2 lg:space-x-0">
               <div className="block lg:hidden">
@@ -77,7 +77,7 @@ const TopBar = () => {
             </div>
             <div className="grid justify-items-end">
               {isSelectedTrackListOpen && (
-                <div className="fixed bg-black rounded-xl pr-4">
+                <div className="fixed rounded-xl bg-black pr-4">
                   <SelectedTrackList />
                 </div>
               )}

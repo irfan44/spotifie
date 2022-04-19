@@ -16,12 +16,12 @@ const IconButton = ({ icon, title, type, variant, handleOnClick }: Props) => {
       case 'remove':
         return 'border border-red-500 text-red-500 rounded-xl';
       default:
-        return 'border border-white text-white rounded-xl';
+        return 'border border-white text-white';
     }
   };
   return (
     <button
-      className={`p-2 ${variantColor()}`}
+      className={`rounded-xl border p-2 ${variantColor()}`}
       title={title}
       type={type}
       onClick={handleOnClick}

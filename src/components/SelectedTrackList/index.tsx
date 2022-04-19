@@ -52,12 +52,12 @@ const SelectedTrackList = () => {
   return (
     <div>
       {isShowOnPage() && (
-        <div className="w-56 lg:w-64 mt-6 lg:mt-20 pl-4 pb-4">
-          <div className=" space-y-4 flex flex-col h-96">
+        <div className="mt-6 pl-4 pb-4 lg:mt-20">
+          <div className="flex h-96 flex-col space-y-4">
             <div className="h-fit">
               <h4>Track List</h4>
             </div>
-            <div className="flex-1 bg-zinc-900 rounded-lg overflow-auto scrollbar-hide">
+            <div className="flex-1 overflow-auto rounded-lg bg-zinc-900 scrollbar-hide">
               {renderTrackItems()}
             </div>
             <Button

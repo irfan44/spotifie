@@ -11,7 +11,7 @@ type Props = {
 const TextArea = ({ id, name, value, placeholder, handleOnChange }: Props) => {
   return (
     <textarea
-      className="p-2 bg-white rounded-xl w-full resize-none text-black"
+      className="w-full resize-none rounded-xl bg-white p-2 text-black"
       id={id}
       name={name}
       placeholder={placeholder}

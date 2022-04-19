@@ -45,7 +45,7 @@ const SideMenu = () => {
   return (
     <div>
       {!isLogin && (
-        <nav className="w-52 mt-6 lg:mt-20 pr-4 pb-4">
+        <nav className="mt-6 lg:mt-20 pr-4 pb-4">
           <div className="flex flex-col h-[calc(100vh_-_6rem)]">
             <div className="flex-1">
               <ul className="space-y-2">

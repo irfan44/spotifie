@@ -59,7 +59,7 @@ const Playlists = () => {
       <div>
         <h4>Playlists</h4>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {renderPlaylists()}
       </div>
     </Container>

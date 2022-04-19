@@ -54,7 +54,7 @@ const TrackCard = (props: Tracks) => {
   };
 
   return (
-    <div className="grid grid-cols-2 bg-zinc-900 rounded-lg gap-4 p-4">
+    <div className="grid grid-cols-2 gap-4 rounded-lg bg-zinc-900 p-4">
       <div className="my-auto">
         <img className="rounded-lg" src={imgUrl} alt={trackTitle} />
       </div>

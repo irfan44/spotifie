@@ -16,11 +16,11 @@ const Menus = ({ title, path, iconActive, iconDefault }: Props) => {
           <div
             className={
               isActive
-                ? 'bg-zinc-900 rounded-lg'
-                : 'bg-black hover:bg-zinc-900 hover:rounded-lg'
+                ? 'rounded-lg bg-zinc-900'
+                : 'bg-black hover:rounded-lg hover:bg-zinc-900'
             }
           >
-            <div className="flex px-5 py-4 items-center space-x-4">
+            <div className="flex items-center space-x-4 px-5 py-4">
               <div>{isActive ? iconActive : iconDefault}</div>
               <p className="font-bold">{title}</p>
             </div>
