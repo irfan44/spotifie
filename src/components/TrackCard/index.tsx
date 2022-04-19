@@ -8,7 +8,7 @@ type Tracks = {
   trackTitle: string;
   artistName: string;
   albumName: string;
-  duration: string;
+  duration?: string;
   handleSelectTrack?: () => void;
   handleDeleteTrack?: () => void;
 };
