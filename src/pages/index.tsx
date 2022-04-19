@@ -1,7 +1,7 @@
 import AppRouter from '../routes';
-import SideMenu from '../components/SideMenu';
-import SelectedTrackList from '../components/SelectedTrackList';
-import TopBar from '../components/TopBar';
+import SideMenu from '../components/navigation/SideMenu';
+import SelectedTrackList from '../components/navigation/SelectedTrackList';
+import TopBar from '../components/navigation/TopBar';
 
 const Main = () => {
   return (

@@ -45,8 +45,8 @@ const SideMenu = () => {
   return (
     <div>
       {!isLogin && (
-        <nav className="mt-6 lg:mt-20 pr-4 pb-4">
-          <div className="flex flex-col h-[calc(100vh_-_6rem)]">
+        <nav className="mt-6 w-52 pr-4 pb-4 lg:mt-20">
+          <div className="flex h-[calc(100vh_-_5.85rem)] flex-col lg:h-[calc(100vh_-_6rem)]">
             <div className="flex-1">
               <ul className="space-y-2">
                 {menus.map((menu) => {
@@ -63,7 +63,7 @@ const SideMenu = () => {
               </ul>
             </div>
             <div>
-              <p className="font-bold text-xs">
+              <p className="text-xs font-bold">
                 © 2022 - Irfan Nurghiffari Muhajir
               </p>
             </div>

@@ -1,10 +1,10 @@
 import { MouseEventHandler } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../services/hooks';
-import { removeSelectedTrack } from '../../services/slice/selectedTrackSlice';
-import { removeSelectedTrackUri } from '../../services/slice/selectedTrackUriSlice';
-import Tracks from '../../types/tracks';
-import Button from '../common/Button';
+import { useAppDispatch, useAppSelector } from '../../../services/hooks';
+import { removeSelectedTrack } from '../../../services/slice/selectedTrackSlice';
+import { removeSelectedTrackUri } from '../../../services/slice/selectedTrackUriSlice';
+import Tracks from '../../../types/tracks';
+import Button from '../../common/Button';
 import TrackItems from './TrackItems';
 
 const SelectedTrackList = () => {
@@ -52,8 +52,8 @@ const SelectedTrackList = () => {
   return (
     <div>
       {isShowOnPage() && (
-        <div className="mt-6 pl-4 pb-4 lg:mt-20">
-          <div className="flex h-96 flex-col space-y-4">
+        <div className="mt-6 w-64 pl-4 pb-4 lg:mt-20">
+          <div className="flex h-[calc(100vh_-_5.85rem)] flex-col space-y-4 lg:h-[calc(100vh_-_6rem)]">
             <div className="h-fit">
               <h4>Track List</h4>
             </div>
