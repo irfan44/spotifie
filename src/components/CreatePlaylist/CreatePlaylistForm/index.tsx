@@ -49,7 +49,7 @@ const CreateForm = ({
         />
       </div>
       <div>
-        <Button primary title="Create Playlist" type="submit" />
+        <Button title="Create Playlist" type="submit" variant="tertiary" />
       </div>
     </form>
   );

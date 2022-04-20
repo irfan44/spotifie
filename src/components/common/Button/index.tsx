@@ -1,20 +1,29 @@
 import { MouseEventHandler } from 'react';
 
 type Props = {
-  primary?: boolean;
   title: string;
   type: 'button' | 'submit' | 'reset';
+  variant: 'primary' | 'secondary' | 'tertiary';
   handleOnClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-const Button = ({ primary, title, type, handleOnClick }: Props) => {
-  const variant = primary
-    ? 'bg-green-500'
-    : 'bg-transparent border border-green-500 text-white';
+const Button = ({ title, type, variant, handleOnClick }: Props) => {
+  const buttonVariant = () => {
+    switch (variant) {
+      case 'primary':
+        return 'border text-white hover:bg-white hover:text-black hover:border';
+      case 'secondary':
+        return 'border bg-white text-black hover:bg-transparent hover:text-white hover:border';
+      case 'tertiary':
+        return 'bg-green-500 text-white hover:bg-green-600';
+      default:
+        return 'border text-white';
+    }
+  };
 
   return (
     <button
-      className={`rounded-xl py-2 px-5 font-bold ${variant}`}
+      className={`rounded-2xl py-2 px-4 font-bold ${buttonVariant()}`}
       type={type}
       onClick={handleOnClick}
     >

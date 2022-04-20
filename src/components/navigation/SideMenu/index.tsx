@@ -64,7 +64,7 @@ const SideMenu = () => {
             </div>
             <div>
               <p className="text-xs font-bold">
-                © 2022 - Irfan Nurghiffari Muhajir
+                © 2022 Irfan Nurghiffari Muhajir
               </p>
             </div>
           </div>

@@ -62,8 +62,8 @@ const SelectedTrackList = () => {
             </div>
             <Button
               title="Add to new playlist"
-              primary
               type="button"
+              variant="primary"
               handleOnClick={handleCreatePlaylistButton}
             />
           </div>
