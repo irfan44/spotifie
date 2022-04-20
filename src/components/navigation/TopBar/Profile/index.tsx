@@ -5,7 +5,7 @@ type Props = {
 
 const Profile = ({ displayImage, displayName }: Props) => {
   return (
-    <div className="p-1 bg-zinc-900 w-24 md:w-36 rounded-2xl">
+    <div className="w-24 rounded-2xl bg-zinc-900 p-1 md:w-36">
       <div className="flex items-center space-x-2">
         <img
           className="rounded-full"
@@ -18,7 +18,7 @@ const Profile = ({ displayImage, displayName }: Props) => {
           width={30}
           height={30}
         />
-        <p className="text-sm font-bold truncate">{displayName}</p>
+        <p className="truncate text-sm font-bold">{displayName}</p>
       </div>
     </div>
   );

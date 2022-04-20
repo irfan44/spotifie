@@ -14,8 +14,6 @@ const Login = () => {
 
   const authUrl = getFullUrl(endpointUrl, bodyParams);
 
-  // const authUrl = `https://accounts.spotify.com/authorize?response_type=${urlParams.response_type}&client_id=${urlParams.client_id}&scope=${urlParams.scope}&redirect_uri=${urlParams.redirect_uri}&state=${urlParams.state}`;
-
   const handleLogin = () => {
     window.location.href = authUrl;
   };
@@ -25,12 +23,12 @@ const Login = () => {
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4">
-      <div className="flex flex-col h-screen">
+    <div className="mx-auto max-w-6xl px-4">
+      <div className="flex h-screen flex-col">
         <div className="py-4">
           <h2 className="leading-tight">Spotifie</h2>
         </div>
-        <div className="grow flex flex-col text-center justify-center">
+        <div className="flex grow flex-col justify-center text-center">
           <div className="space-y-4">
             <h3>Welcome to Spotifie!</h3>
             <p>This project is a implementation of spotify&apos;s playlist</p>

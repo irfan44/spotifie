@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdClose, MdMenu, MdQueueMusic } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
-import { useAppSelector } from '../../services/hooks';
-import IconButton from '../common/IconButton';
+import { useAppSelector } from '../../../services/hooks';
+import IconButton from '../../common/IconButton';
 import Profile from './Profile';
 import SelectedTrackList from '../SelectedTrackList';
 import SideMenu from '../SideMenu';
@@ -28,14 +28,40 @@ const TopBar = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
   };
 
+  useEffect(() => {
+    // handle clickOutside of the side menu
+    const handleClickOutside = (event: any) => {
+      if (
+        isSideMenuOpen &&
+        !event.target.closest('.side-menu') &&
+        !event.target.closest('#side-menu-button')
+      ) {
+        setIsSideMenuOpen(false);
+      }
+
+      if (
+        isSelectedTrackListOpen &&
+        !event.target.closest('.selected-track-list') &&
+        !event.target.closest('#selected-track-list-button')
+      ) {
+        setIsSelectedTrackListOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isSideMenuOpen, isSelectedTrackListOpen]);
+
   return (
     <div>
       {!isLogin && (
-        <div className="fixed bg-black container p-4">
+        <div className="container fixed bg-black p-4">
           <div className="grid grid-cols-2">
             <div className="flex items-center space-x-2 lg:space-x-0">
               <div className="block lg:hidden">
                 <IconButton
+                  id="side-menu-button"
                   icon={isSideMenuOpen ? <MdClose /> : <MdMenu />}
                   title="Menu"
                   type="button"
@@ -51,6 +77,7 @@ const TopBar = () => {
               <div className="flex items-center space-x-2 lg:space-x-0">
                 <div className="block lg:hidden">
                   <IconButton
+                    id="selected-track-list-button"
                     icon={
                       isSelectedTrackListOpen ? <MdClose /> : <MdQueueMusic />
                     }
@@ -70,14 +97,14 @@ const TopBar = () => {
             </div>
             <div>
               {isSideMenuOpen && (
-                <div className="fixed bg-black">
+                <div className="side-menu fixed bg-black">
                   <SideMenu />
                 </div>
               )}
             </div>
             <div className="grid justify-items-end">
               {isSelectedTrackListOpen && (
-                <div className="fixed bg-black rounded-xl pr-4">
+                <div className="selected-track-list fixed bg-black pr-4">
                   <SelectedTrackList />
                 </div>
               )}

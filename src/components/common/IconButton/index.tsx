@@ -1,6 +1,7 @@
 import React, { MouseEventHandler } from 'react';
 
 type Props = {
+  id?: string;
   icon: React.ReactNode;
   title: string;
   type: 'button';
@@ -8,7 +9,14 @@ type Props = {
   handleOnClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-const IconButton = ({ icon, title, type, variant, handleOnClick }: Props) => {
+const IconButton = ({
+  id,
+  icon,
+  title,
+  type,
+  variant,
+  handleOnClick,
+}: Props) => {
   const variantColor = () => {
     switch (variant) {
       case 'add':
@@ -16,12 +24,13 @@ const IconButton = ({ icon, title, type, variant, handleOnClick }: Props) => {
       case 'remove':
         return 'border border-red-500 text-red-500 rounded-xl';
       default:
-        return 'border border-white text-white rounded-xl';
+        return 'border border-white text-white';
     }
   };
   return (
     <button
-      className={`p-2 ${variantColor()}`}
+      id={id}
+      className={`rounded-xl border p-2 ${variantColor()}`}
       title={title}
       type={type}
       onClick={handleOnClick}

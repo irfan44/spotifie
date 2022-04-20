@@ -146,7 +146,7 @@ const CreatePlaylist = () => {
       <div className="mt-6">
         <h4>Selected Tracks</h4>
       </div>
-      <div className="overflow-auto scrollbar-hide grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 overflow-auto scrollbar-hide md:grid-cols-2">
         {renderTracks()}
       </div>
     </Container>

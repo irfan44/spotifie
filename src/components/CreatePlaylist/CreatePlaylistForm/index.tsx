@@ -34,7 +34,7 @@ const CreateForm = ({
           placeholder="Insert playlist name"
           handleOnChange={handleInputChange}
         />
-        <div className={isError ? 'text-red-600 font-bold' : 'text-white'}>
+        <div className={isError ? 'font-bold text-red-600' : 'text-white'}>
           Playlist name must be at least 10 characters long
         </div>
       </div>

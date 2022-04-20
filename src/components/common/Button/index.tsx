@@ -14,7 +14,7 @@ const Button = ({ primary, title, type, handleOnClick }: Props) => {
 
   return (
     <button
-      className={`font-bold py-2 px-5 rounded-xl ${variant}`}
+      className={`rounded-xl py-2 px-5 font-bold ${variant}`}
       type={type}
       onClick={handleOnClick}
     >
