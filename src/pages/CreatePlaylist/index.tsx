@@ -1,5 +1,6 @@
 import { ChangeEventHandler, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { openModal } from 'redux/slice/modalSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import postCreatePlaylist from '../../api/postCreatePlaylist';
 import CreateForm from '../../components/CreatePlaylist/CreatePlaylistForm';
@@ -82,6 +83,7 @@ const CreatePlaylist = () => {
       }
     } else {
       setIsError(true);
+      dispatch(openModal('Hello'));
     }
   };
 

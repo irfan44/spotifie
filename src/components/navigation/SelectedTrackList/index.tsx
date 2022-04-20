@@ -55,7 +55,7 @@ const SelectedTrackList = () => {
         <div className="mt-6 w-64 pl-4 pb-4 lg:mt-20">
           <div className="flex h-[calc(100vh_-_5.85rem)] flex-col space-y-4 lg:h-[calc(100vh_-_6rem)]">
             <div className="h-fit">
-              <h4>Track List</h4>
+              <h4>Selected Tracks</h4>
             </div>
             <div className="flex-1 overflow-auto rounded-lg bg-zinc-900 scrollbar-hide">
               {renderTrackItems()}
