@@ -42,7 +42,8 @@ const TopBar = () => {
       if (
         isSelectedTrackListOpen &&
         !event.target.closest('.selected-track-list') &&
-        !event.target.closest('#selected-track-list-button')
+        !event.target.closest('#selected-track-list-button') &&
+        !event.target.closest('#delete-track')
       ) {
         setIsSelectedTrackListOpen(false);
       }
