@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import getRecommendedTracks from '../../api/getRecommendedTracks';
-import { useAppDispatch, useAppSelector } from '../../services/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   insertSelectedTrack,
   removeSelectedTrack,
-} from '../../services/slice/selectedTrackSlice';
+} from '../../redux/slice/selectedTrackSlice';
 import {
   insertSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../services/slice/selectedTrackUriSlice';
+} from '../../redux/slice/selectedTrackUriSlice';
 import TrackCard from '../../components/TrackCard';
 import Tracks from '../../types/tracks';
 import Container from '../../components/layouts/Container';

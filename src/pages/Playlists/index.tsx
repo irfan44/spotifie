@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import getUserPlaylists from '../../api/getUserPlaylists';
 import Container from '../../components/layouts/Container';
 import PlaylistsCard from '../../components/Playlists/PlaylistsCard';
-import { useAppSelector } from '../../services/hooks';
+import { useAppSelector } from '../../redux/hooks';
 
 type Playlist = {
   playlistId: string;

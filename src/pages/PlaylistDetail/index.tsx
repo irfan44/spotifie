@@ -3,15 +3,15 @@ import { useNavigate, useParams } from 'react-router-dom';
 import getPlaylistItems from '../../api/getPlaylistItems';
 import Container from '../../components/layouts/Container';
 import TrackCard from '../../components/TrackCard';
-import { useAppDispatch, useAppSelector } from '../../services/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   insertSelectedTrack,
   removeSelectedTrack,
-} from '../../services/slice/selectedTrackSlice';
+} from '../../redux/slice/selectedTrackSlice';
 import {
   insertSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../services/slice/selectedTrackUriSlice';
+} from '../../redux/slice/selectedTrackUriSlice';
 import Tracks from '../../types/tracks';
 
 const PlaylistDetail = () => {

@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { useAppSelector } from '../../services/hooks';
+import { useAppSelector } from '../../redux/hooks';
 import Button from '../common/Button';
 
 type Tracks = {

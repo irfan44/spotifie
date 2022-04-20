@@ -1,8 +1,8 @@
 import { MouseEventHandler } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../services/hooks';
-import { removeSelectedTrack } from '../../../services/slice/selectedTrackSlice';
-import { removeSelectedTrackUri } from '../../../services/slice/selectedTrackUriSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { removeSelectedTrack } from '../../../redux/slice/selectedTrackSlice';
+import { removeSelectedTrackUri } from '../../../redux/slice/selectedTrackUriSlice';
 import Tracks from '../../../types/tracks';
 import Button from '../../common/Button';
 import TrackItems from './TrackItems';

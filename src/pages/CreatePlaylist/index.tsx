@@ -1,17 +1,17 @@
 import { ChangeEventHandler, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../services/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import postCreatePlaylist from '../../api/postCreatePlaylist';
 import CreateForm from '../../components/CreatePlaylist/CreatePlaylistForm';
 import TrackCard from '../../components/TrackCard';
 import {
   clearSelectedTrack,
   removeSelectedTrack,
-} from '../../services/slice/selectedTrackSlice';
+} from '../../redux/slice/selectedTrackSlice';
 import {
   clearSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../services/slice/selectedTrackUriSlice';
+} from '../../redux/slice/selectedTrackUriSlice';
 import Tracks from '../../types/tracks';
 import postAddItemsToPlaylist from '../../api/postAddItemToPlaylist';
 import Container from '../../components/layouts/Container';

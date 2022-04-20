@@ -4,15 +4,15 @@ import getSearchTracks from '../../api/getSearchTracks';
 import Container from '../../components/layouts/Container';
 import SearchBar from '../../components/Search/SearchBar';
 import TrackCard from '../../components/TrackCard';
-import { useAppSelector, useAppDispatch } from '../../services/hooks';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import {
   insertSelectedTrack,
   removeSelectedTrack,
-} from '../../services/slice/selectedTrackSlice';
+} from '../../redux/slice/selectedTrackSlice';
 import {
   insertSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../services/slice/selectedTrackUriSlice';
+} from '../../redux/slice/selectedTrackUriSlice';
 import Tracks from '../../types/tracks';
 
 const Search = () => {
