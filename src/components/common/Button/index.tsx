@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Button = ({ title, type, variant, handleOnClick }: Props) => {
-  const buttonVariant = () => {
+  const variantColor = () => {
     switch (variant) {
       case 'primary':
         return 'border text-white hover:bg-white hover:text-black hover:border';
@@ -23,7 +23,7 @@ const Button = ({ title, type, variant, handleOnClick }: Props) => {
 
   return (
     <button
-      className={`rounded-2xl py-2 px-4 font-bold ${buttonVariant()}`}
+      className={`rounded-2xl py-2 px-4 font-bold ${variantColor()}`}
       type={type}
       onClick={handleOnClick}
     >

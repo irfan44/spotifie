@@ -20,17 +20,17 @@ const IconButton = ({
   const variantColor = () => {
     switch (variant) {
       case 'add':
-        return 'border border-green-500 text-green-500 rounded-xl';
+        return 'hover:text-green-500';
       case 'remove':
-        return 'border border-red-500 text-red-500 rounded-xl';
+        return 'hover:text-red-500';
       default:
-        return 'border border-white text-white';
+        return 'text-white';
     }
   };
   return (
     <button
       id={id}
-      className={`rounded-xl border p-2 ${variantColor()}`}
+      className={`rounded-xl p-2 text-lg ${variantColor()}`}
       title={title}
       type={type}
       onClick={handleOnClick}
