@@ -30,7 +30,6 @@ const TopBar = () => {
   };
 
   useEffect(() => {
-    // handle clickOutside of the side menu
     const handleClickOutside = (event: any) => {
       if (
         isSideMenuOpen &&

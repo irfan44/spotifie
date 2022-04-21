@@ -28,7 +28,6 @@ const Playlists = () => {
 
   const handleFetchError = (error: Error) => {
     const errorMessage = error.response.data.error.message;
-
     switch (error.response.status) {
       case 401:
         dispatch(
