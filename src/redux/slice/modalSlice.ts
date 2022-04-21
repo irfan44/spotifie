@@ -6,17 +6,19 @@ const modalSlice = createSlice({
   initialState: {
     value: {
       isOpen: false,
-      content: null,
+      content: { status: null, message: null },
     },
   },
   reducers: {
     openModal: (state, action) => {
       state.value.isOpen = true;
-      state.value.content = action.payload;
+      state.value.content.status = action.payload.status;
+      state.value.content.message = action.payload.message;
     },
     closeModal: (state) => {
       state.value.isOpen = false;
-      state.value.content = null;
+      state.value.content.status = null;
+      state.value.content.message = null;
     },
   },
 });

@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { openModal } from 'redux/slice/modalSlice';
+import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import { resetToken } from 'redux/slice/tokenSlice';
+import Error from '../../types/error';
 import getPlaylistItems from '../../api/getPlaylistItems';
 import Container from '../../components/layouts/Container';
 import TrackCard from '../../components/TrackCard';
@@ -25,6 +29,38 @@ const PlaylistDetail = () => {
   const params = useParams();
   const { playlistId } = params;
 
+  const handleFetchError = (error: Error) => {
+    const errorMessage = error.response.data.error.message;
+
+    switch (error.response.status) {
+      case 401:
+        dispatch(
+          openModal({
+            status: 'error',
+            message: errorMessage,
+          })
+        );
+        dispatch(resetToken());
+        dispatch(resetUserProfile());
+        navigate('/login');
+        break;
+      case 403:
+        dispatch(
+          openModal({
+            status: 'error',
+            message: errorMessage,
+          })
+        );
+        dispatch(resetToken());
+        dispatch(resetUserProfile());
+        navigate('/login');
+        break;
+      default:
+        dispatch(openModal('error'));
+        break;
+    }
+  };
+
   const fetchPlaylistItems = async () => {
     if (playlistId !== undefined && token !== null) {
       try {
@@ -32,7 +68,8 @@ const PlaylistDetail = () => {
         setPlaylistItems(response.tracks);
         setPlaylistTitle(response.playlistName);
       } catch (error) {
-        alert(error);
+        const errorResponse = error as Error;
+        handleFetchError(errorResponse);
       }
     }
   };
