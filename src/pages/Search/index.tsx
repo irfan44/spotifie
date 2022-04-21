@@ -4,6 +4,7 @@ import { openModal } from 'redux/slice/modalSlice';
 import { resetToken } from 'redux/slice/tokenSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
 import Error from 'types/error';
+import isLogin from 'utils/isLogin';
 import getSearchTracks from '../../api/getSearchTracks';
 import Container from '../../components/layouts/Container';
 import SearchBar from '../../components/Search/SearchBar';
@@ -31,34 +32,15 @@ const Search = () => {
 
   const handleFetchError = (error: Error) => {
     const errorMessage = error.response.data.error.message;
-
-    switch (error.response.status) {
-      case 401:
-        dispatch(
-          openModal({
-            status: 'error',
-            message: errorMessage,
-          })
-        );
-        dispatch(resetToken());
-        dispatch(resetUserProfile());
-        navigate('/login');
-        break;
-      case 403:
-        dispatch(
-          openModal({
-            status: 'error',
-            message: errorMessage,
-          })
-        );
-        dispatch(resetToken());
-        dispatch(resetUserProfile());
-        navigate('/login');
-        break;
-      default:
-        dispatch(openModal('error'));
-        break;
-    }
+    dispatch(
+      openModal({
+        status: 'error',
+        message: errorMessage,
+      })
+    );
+    dispatch(resetToken());
+    dispatch(resetUserProfile());
+    navigate('/login');
   };
 
   const handleSearchInput: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -116,10 +98,10 @@ const Search = () => {
   };
 
   useEffect(() => {
-    if (token === null) {
+    if (!isLogin(token)) {
       navigate('/login');
     }
-    document.title = 'Home - Spotifie';
+    document.title = 'Search - Spotifie';
   });
 
   return (

@@ -2,7 +2,7 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import TrackCard from '.';
-import data from '../../api/mocks/singleSample';
+import data from '../../api/sample/singleSample';
 import store from '../../redux/store';
 
 test('Render track component', () => {

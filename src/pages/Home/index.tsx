@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { openModal } from 'redux/slice/modalSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
 import { resetToken } from 'redux/slice/tokenSlice';
+import isLogin from 'utils/isLogin';
 import Error from '../../types/error';
 import getRecommendedTracks from '../../api/getRecommendedTracks';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -29,34 +30,15 @@ const Home = () => {
 
   const handleFetchError = (error: Error) => {
     const errorMessage = error.response.data.error.message;
-
-    switch (error.response.status) {
-      case 401:
-        dispatch(
-          openModal({
-            status: 'error',
-            message: errorMessage,
-          })
-        );
-        dispatch(resetToken());
-        dispatch(resetUserProfile());
-        navigate('/login');
-        break;
-      case 403:
-        dispatch(
-          openModal({
-            status: 'error',
-            message: errorMessage,
-          })
-        );
-        dispatch(resetToken());
-        dispatch(resetUserProfile());
-        navigate('/login');
-        break;
-      default:
-        dispatch(openModal('error'));
-        break;
-    }
+    dispatch(
+      openModal({
+        status: 'error',
+        message: errorMessage,
+      })
+    );
+    dispatch(resetToken());
+    dispatch(resetUserProfile());
+    navigate('/login');
   };
 
   const fetchRecommendedTracks = async () => {
@@ -102,7 +84,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (token === null) {
+    if (!isLogin(token)) {
       navigate('/login');
     }
     fetchRecommendedTracks();
