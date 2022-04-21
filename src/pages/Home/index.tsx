@@ -17,7 +17,6 @@ import { resetToken } from 'redux/slice/tokenSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
 import Error from 'types/error';
 import Tracks from 'types/tracks';
-import isLogin from 'utils/isLogin';
 
 const Home = () => {
   const [tracks, setTracks] = useState<Tracks[]>([]);
@@ -85,9 +84,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (!isLogin(token)) {
-      navigate('/login');
-    }
     fetchRecommendedTracks();
     document.title = 'Home - Spotifie';
   }, []);
