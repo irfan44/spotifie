@@ -30,7 +30,7 @@ const SelectedTrackList = () => {
     navigate('/create-playlist');
   };
 
-  const deleteTrackFromSelectedList = (track: Tracks) => {
+  const removeTrackFromSelectedList = (track: Tracks) => {
     const selectedUri = track.uri;
     dispatch(removeSelectedTrack(track));
     dispatch(removeSelectedTrackUri(selectedUri));
@@ -43,7 +43,7 @@ const SelectedTrackList = () => {
           key={track.uri}
           trackTitle={track.trackTitle}
           artistName={track.artistName}
-          handleDeleteTrack={() => deleteTrackFromSelectedList(track)}
+          handleRemoveTrack={() => removeTrackFromSelectedList(track)}
         />
       );
     });

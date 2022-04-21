@@ -5,6 +5,7 @@ type Tracks = {
   artistName: string;
   albumName: string;
   duration: string;
+  externalUrl: string;
 };
 
 export default Tracks;

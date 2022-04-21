@@ -36,6 +36,9 @@ type Response = {
       items: Data[];
     };
     name: string;
+    external_urls: {
+      spotify: string;
+    };
   };
 };
 
@@ -64,10 +67,15 @@ const getPlaylistItems = async (playlistId: string, token: string) => {
         duration,
         artistName,
         albumName: data.track.album.name,
+        externalUrl: data.track.external_urls.spotify,
       });
     });
 
-    return { tracks, playlistName: playlistData.name };
+    return {
+      tracks,
+      playlistName: playlistData.name,
+      externalUrl: playlistData.external_urls.spotify,
+    };
   };
   return axios
     .get(endpointUrl, {

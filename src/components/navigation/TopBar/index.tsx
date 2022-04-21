@@ -43,7 +43,7 @@ const TopBar = () => {
         isSelectedTrackListOpen &&
         !event.target.closest('.selected-track-list') &&
         !event.target.closest('#selected-track-list-button') &&
-        !event.target.closest('#delete-track')
+        !event.target.closest('#remove-track')
       ) {
         setIsSelectedTrackListOpen(false);
       }

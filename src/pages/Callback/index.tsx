@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { openModal } from 'redux/slice/modalSlice';
+import isLogin from 'utils/isLogin';
 import Error from '../../types/error';
 import getUserProfile from '../../api/getUserProfile';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -76,7 +77,7 @@ const Callback = () => {
   });
 
   useEffect(() => {
-    if (token !== null && userProfile !== null) {
+    if (isLogin(token) && userProfile !== null) {
       navigate('/');
     }
   }, [token, userProfile, navigate]);

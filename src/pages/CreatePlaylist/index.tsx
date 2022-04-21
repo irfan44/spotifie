@@ -113,7 +113,7 @@ const CreatePlaylist = () => {
     resetForm();
   };
 
-  const deleteTrackFromSelectedList = (track: Tracks) => {
+  const removeTrackFromSelectedList = (track: Tracks) => {
     const selectedUri = track.uri;
     dispatch(removeSelectedTrack(track));
     dispatch(removeSelectedTrackUri(selectedUri));
@@ -130,7 +130,8 @@ const CreatePlaylist = () => {
           artistName={track.artistName}
           albumName={track.albumName}
           duration={track.duration}
-          handleDeleteTrack={() => deleteTrackFromSelectedList(track)}
+          externalUrl={track.externalUrl}
+          handleRemoveTrack={() => removeTrackFromSelectedList(track)}
         />
       );
     });

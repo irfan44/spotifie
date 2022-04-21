@@ -59,7 +59,7 @@ const Home = () => {
     dispatch(insertSelectedTrack(selectedTrack));
   };
 
-  const deleteTrackFromSelectedList = (selectedTrack: Tracks) => {
+  const removeTrackFromSelectedList = (selectedTrack: Tracks) => {
     const selectedUri = selectedTrack.uri;
     dispatch(removeSelectedTrackUri(selectedUri));
     dispatch(removeSelectedTrack(selectedTrack));
@@ -76,8 +76,9 @@ const Home = () => {
           artistName={track.artistName}
           albumName={track.albumName}
           duration={track.duration}
+          externalUrl={track.externalUrl}
           handleSelectTrack={() => addTrackToSelectedList(track)}
-          handleDeleteTrack={() => deleteTrackFromSelectedList(track)}
+          handleRemoveTrack={() => removeTrackFromSelectedList(track)}
         />
       );
     });
