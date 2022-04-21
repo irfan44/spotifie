@@ -1,9 +1,14 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { openModal } from 'redux/slice/modalSlice';
+import Error from '../../types/error';
 import getUserProfile from '../../api/getUserProfile';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setToken } from '../../redux/slice/tokenSlice';
-import { setUserProfile } from '../../redux/slice/userProfileSlice';
+import { resetToken, setToken } from '../../redux/slice/tokenSlice';
+import {
+  resetUserProfile,
+  setUserProfile,
+} from '../../redux/slice/userProfileSlice';
 
 const Callback = () => {
   const token = useAppSelector((state) => state.token.value);
@@ -18,6 +23,38 @@ const Callback = () => {
     const accessToken = searchParams.get('access_token');
     if (accessToken !== null) {
       dispatch(setToken(accessToken));
+    }
+  };
+
+  const handleFetchError = (error: Error) => {
+    const errorMessage = error.response.data.error.message;
+
+    switch (error.response.status) {
+      case 401:
+        dispatch(
+          openModal({
+            status: 'error',
+            message: errorMessage,
+          })
+        );
+        dispatch(resetToken());
+        dispatch(resetUserProfile());
+        navigate('/login');
+        break;
+      case 403:
+        dispatch(
+          openModal({
+            status: 'error',
+            message: errorMessage,
+          })
+        );
+        dispatch(resetToken());
+        dispatch(resetUserProfile());
+        navigate('/login');
+        break;
+      default:
+        dispatch(openModal('error'));
+        break;
     }
   };
 
@@ -36,7 +73,8 @@ const Callback = () => {
           );
         }
       } catch (error) {
-        alert(error);
+        const errorResponse = error as Error;
+        handleFetchError(errorResponse);
       }
     }
   };

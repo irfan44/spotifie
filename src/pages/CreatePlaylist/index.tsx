@@ -184,7 +184,7 @@ const CreatePlaylist = () => {
         <h4>Create Playlist</h4>
       </div>
       <div className="space-y-2">
-        <div>
+        <div className="w-2/3">
           <CreateForm
             name={name}
             desc={desc}
@@ -195,7 +195,7 @@ const CreatePlaylist = () => {
           />
         </div>
       </div>
-      <div className="mt-6">
+      <div>
         <h4>Selected Tracks</h4>
       </div>
       <div className="grid grid-cols-1 gap-4 overflow-auto scrollbar-hide md:grid-cols-2">

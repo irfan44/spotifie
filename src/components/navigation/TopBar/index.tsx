@@ -15,6 +15,7 @@ const TopBar = () => {
     (state) => state.userProfile.displayImage
   );
   const displayName = useAppSelector((state) => state.userProfile.displayName);
+  const profileLink = useAppSelector((state) => state.userProfile.href);
 
   const location = useLocation();
 
@@ -92,6 +93,7 @@ const TopBar = () => {
                   <Profile
                     displayImage={displayImage}
                     displayName={displayName}
+                    profileLink={profileLink}
                   />
                 </div>
               </div>
