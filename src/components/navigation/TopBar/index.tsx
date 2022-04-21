@@ -20,6 +20,7 @@ const TopBar = () => {
   const location = useLocation();
 
   const isLogin = location.pathname === '/login';
+  const isCreatePlaylist = location.pathname === '/create-playlist';
 
   const handleSelectedTrackListClick = () => {
     setIsSelectedTrackListOpen(!isSelectedTrackListOpen);
@@ -77,16 +78,18 @@ const TopBar = () => {
             <div className="grid justify-items-end">
               <div className="flex items-center space-x-2 lg:space-x-0">
                 <div className="block lg:hidden">
-                  <IconButton
-                    id="selected-track-list-button"
-                    icon={
-                      isSelectedTrackListOpen ? <MdClose /> : <MdQueueMusic />
-                    }
-                    title="Menu"
-                    type="button"
-                    variant="default"
-                    handleOnClick={handleSelectedTrackListClick}
-                  />
+                  {!isCreatePlaylist && (
+                    <IconButton
+                      id="selected-track-list-button"
+                      icon={
+                        isSelectedTrackListOpen ? <MdClose /> : <MdQueueMusic />
+                      }
+                      title="Menu"
+                      type="button"
+                      variant="default"
+                      handleOnClick={handleSelectedTrackListClick}
+                    />
+                  )}
                 </div>
                 <div>
                   <Profile

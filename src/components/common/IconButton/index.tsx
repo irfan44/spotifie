@@ -20,11 +20,11 @@ const IconButton = ({
   const variantColor = () => {
     switch (variant) {
       case 'add':
-        return 'hover:text-green-500';
+        return 'hover:text-green-500 focus:text-green-500';
       case 'remove':
-        return 'hover:text-red-500';
+        return 'hover:text-red-500 focus:text-red-500';
       default:
-        return 'text-white';
+        return 'text-white focus:text-white';
     }
   };
   return (
