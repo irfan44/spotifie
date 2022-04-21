@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,17 +7,17 @@
 @layer base {
   h1,
   .h1 {
-    @apply font-sans text-4xl font-bold md:text-5xl tracking-tighter leading-tight;
+    @apply font-sans text-4xl font-bold leading-tight tracking-tighter md:text-5xl;
   }
 
   h2,
   .h2 {
-    @apply font-sans text-2xl font-bold md:text-4xl tracking-tighter leading-tight;
+    @apply font-sans text-2xl font-bold leading-tight tracking-tighter md:text-4xl;
   }
 
   h3,
   .h3 {
-    @apply font-sans text-xl font-bold md:text-3xl tracking-tighter leading-tight;
+    @apply font-sans text-xl font-bold leading-tight tracking-tighter md:text-3xl;
   }
 
   h4,
@@ -25,7 +27,7 @@
 
   h5,
   .h5 {
-    @apply font-sans text-base font-bold md:text-lg tracking-tighter leading-tight;
+    @apply font-sans text-base font-bold leading-tight tracking-tighter md:text-lg;
   }
 
   body,
