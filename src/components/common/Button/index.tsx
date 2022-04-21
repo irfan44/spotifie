@@ -11,13 +11,13 @@ const Button = ({ title, type, variant, handleOnClick }: Props) => {
   const variantColor = () => {
     switch (variant) {
       case 'primary':
-        return 'border text-white hover:bg-white hover:text-black hover:border focus:border focus:text-white focus:bg-transparent';
+        return 'border text-white focus:border focus:text-white focus:bg-transparent';
       case 'secondary':
-        return 'border bg-white text-black hover:bg-transparent hover:text-white hover:border focus:border focus:bg-white focus:text-black';
+        return 'border bg-white text-black focus:border focus:bg-white focus:text-black';
       case 'tertiary':
-        return 'bg-green-500 text-white hover:bg-green-600 focus:bg-green-500';
+        return 'bg-green-500 text-white focus:bg-green-500';
       default:
-        return 'border text-white hover:bg-white hover:text-black hover:border focus:border focus:text-white focus:bg-transparent';
+        return 'border text-white focus:border focus:text-white focus:bg-transparent';
     }
   };
 
