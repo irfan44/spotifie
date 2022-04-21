@@ -1,3 +1,4 @@
+import Logout from 'pages/Logout';
 import { Routes, Route } from 'react-router-dom';
 import Callback from '../pages/Callback';
 import CreatePlaylist from '../pages/CreatePlaylist';
@@ -17,6 +18,7 @@ const AppRouter = () => {
       <Route path="/search" element={<Search />} />
       <Route path="/playlists" element={<Playlists />} />
       <Route path="/playlists/:playlistId" element={<PlaylistDetail />} />
+      <Route path="/logout" element={<Logout />} />
       <Route path="*" element={<Home />} />
     </Routes>
   );

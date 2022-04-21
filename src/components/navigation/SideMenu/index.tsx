@@ -1,4 +1,9 @@
-import { MdLibraryMusic, MdOutlineLibraryMusic } from 'react-icons/md';
+import {
+  MdLibraryMusic,
+  MdLogout,
+  MdOutlineLibraryMusic,
+  MdOutlineLogout,
+} from 'react-icons/md';
 import {
   RiHome5Fill,
   RiHome5Line,
@@ -39,6 +44,12 @@ const SideMenu = () => {
       path: '/playlists',
       iconActive: <MdLibraryMusic />,
       iconDefault: <MdOutlineLibraryMusic />,
+    },
+    {
+      title: 'Logout',
+      path: '/logout',
+      iconActive: <MdLogout />,
+      iconDefault: <MdOutlineLogout />,
     },
   ];
 
