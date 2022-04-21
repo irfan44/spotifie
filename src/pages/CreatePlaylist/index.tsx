@@ -103,7 +103,7 @@ const CreatePlaylist = () => {
 
   const handleCreatePlaylist = async () => {
     if (name.length > 10) {
-      if (selectedTrackUri.length === 0) {
+      if (selectedTrackUri.length !== 0) {
         const data = { name, desc };
         if (userId !== null && token !== null) {
           try {
