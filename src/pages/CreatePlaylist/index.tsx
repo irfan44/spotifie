@@ -103,24 +103,33 @@ const CreatePlaylist = () => {
 
   const handleCreatePlaylist = async () => {
     if (name.length > 10) {
-      const data = { name, desc };
-      if (userId !== null && token !== null) {
-        try {
-          const response = await postCreatePlaylist(userId, data, token);
-          await handleAddItemsToPlaylist(response.playlistId);
+      if (selectedTrackUri.length === 0) {
+        const data = { name, desc };
+        if (userId !== null && token !== null) {
+          try {
+            const response = await postCreatePlaylist(userId, data, token);
+            await handleAddItemsToPlaylist(response.playlistId);
+            dispatch(
+              openModal({
+                status: 'success',
+                message: 'Playlist successfully created',
+              })
+            );
+          } catch (error) {
+            const errorResponse = error as Error;
+            handleFetchError(errorResponse);
+          }
+        } else {
           dispatch(
-            openModal({
-              status: 'success',
-              message: 'Playlist successfully created',
-            })
+            openModal({ status: 'error', message: 'Cannot find user ID' })
           );
-        } catch (error) {
-          const errorResponse = error as Error;
-          handleFetchError(errorResponse);
         }
       } else {
         dispatch(
-          openModal({ status: 'error', message: 'Cannot find user ID' })
+          openModal({
+            status: 'error',
+            message: 'Please select at least one track',
+          })
         );
       }
     } else {
@@ -175,7 +184,7 @@ const CreatePlaylist = () => {
         <h4>Create Playlist</h4>
       </div>
       <div className="space-y-2">
-        <div>
+        <div className="w-2/3">
           <CreateForm
             name={name}
             desc={desc}
@@ -186,7 +195,7 @@ const CreatePlaylist = () => {
           />
         </div>
       </div>
-      <div className="mt-6">
+      <div>
         <h4>Selected Tracks</h4>
       </div>
       <div className="grid grid-cols-1 gap-4 overflow-auto scrollbar-hide md:grid-cols-2">

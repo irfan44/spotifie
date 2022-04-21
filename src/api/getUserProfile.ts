@@ -9,7 +9,9 @@ type Response = {
   // eslint-disable-next-line camelcase
   display_name: string;
   images: Images[];
-  href: string;
+  external_urls: {
+    spotify: string;
+  };
 };
 
 const getUserProfile = async (token: string) => {
@@ -20,7 +22,7 @@ const getUserProfile = async (token: string) => {
       id: data.id,
       name: data.display_name,
       images: data.images[0].url,
-      href: data.href,
+      href: data.external_urls.spotify,
     };
   };
   return axios
