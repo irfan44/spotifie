@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MdClose, MdMenu, MdQueueMusic } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
-import { useAppSelector } from '../../../services/hooks';
+import { useAppSelector } from '../../../redux/hooks';
 import IconButton from '../../common/IconButton';
 import Profile from './Profile';
 import SelectedTrackList from '../SelectedTrackList';
@@ -42,7 +42,8 @@ const TopBar = () => {
       if (
         isSelectedTrackListOpen &&
         !event.target.closest('.selected-track-list') &&
-        !event.target.closest('#selected-track-list-button')
+        !event.target.closest('#selected-track-list-button') &&
+        !event.target.closest('#delete-track')
       ) {
         setIsSelectedTrackListOpen(false);
       }

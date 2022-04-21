@@ -27,7 +27,7 @@ const SearchBar = ({
         value={value}
         handleOnChange={handleOnChange}
       />
-      <Button primary title="Search" type="submit" />
+      <Button title="Search" type="submit" variant="primary" />
     </form>
   );
 };

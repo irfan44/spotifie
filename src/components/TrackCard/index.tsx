@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { useAppSelector } from '../../services/hooks';
+import { useAppSelector } from '../../redux/hooks';
 import Button from '../common/Button';
 
 type Tracks = {
@@ -70,16 +70,16 @@ const TrackCard = (props: Tracks) => {
         <div>
           {checkIfSelected() ? (
             <Button
-              title="Remove"
+              title="Unselect"
               type="button"
-              primary
+              variant="secondary"
               handleOnClick={handleDeleteTrackFromSelectedList}
             />
           ) : (
             <Button
-              title="Add"
+              title="Select"
               type="button"
-              primary
+              variant="primary"
               handleOnClick={handleAddTrackToSelectedList}
             />
           )}

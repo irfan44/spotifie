@@ -16,8 +16,14 @@ const userProfileSlice = createSlice({
       state.displayImage = action.payload.displayImage;
       state.href = action.payload.href;
     },
+    resetUserProfile: (state) => {
+      state.id = null;
+      state.displayName = null;
+      state.displayImage = null;
+      state.href = null;
+    },
   },
 });
 
-export const { setUserProfile } = userProfileSlice.actions;
+export const { setUserProfile, resetUserProfile } = userProfileSlice.actions;
 export default userProfileSlice.reducer;

@@ -1,8 +1,8 @@
 import { MouseEventHandler } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../services/hooks';
-import { removeSelectedTrack } from '../../../services/slice/selectedTrackSlice';
-import { removeSelectedTrackUri } from '../../../services/slice/selectedTrackUriSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { removeSelectedTrack } from '../../../redux/slice/selectedTrackSlice';
+import { removeSelectedTrackUri } from '../../../redux/slice/selectedTrackUriSlice';
 import Tracks from '../../../types/tracks';
 import Button from '../../common/Button';
 import TrackItems from './TrackItems';
@@ -55,15 +55,15 @@ const SelectedTrackList = () => {
         <div className="mt-6 w-64 pl-4 pb-4 lg:mt-20">
           <div className="flex h-[calc(100vh_-_5.85rem)] flex-col space-y-4 lg:h-[calc(100vh_-_6rem)]">
             <div className="h-fit">
-              <h4>Track List</h4>
+              <h4>Selected Tracks</h4>
             </div>
             <div className="flex-1 overflow-auto rounded-lg bg-zinc-900 scrollbar-hide">
               {renderTrackItems()}
             </div>
             <Button
               title="Add to new playlist"
-              primary
               type="button"
+              variant="primary"
               handleOnClick={handleCreatePlaylistButton}
             />
           </div>

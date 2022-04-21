@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import getUserProfile from '../../api/getUserProfile';
-import { useAppDispatch, useAppSelector } from '../../services/hooks';
-import { setToken } from '../../services/slice/tokenSlice';
-import { setUserProfile } from '../../services/slice/userProfileSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { setToken } from '../../redux/slice/tokenSlice';
+import { setUserProfile } from '../../redux/slice/userProfileSlice';
 
 const Callback = () => {
   const token = useAppSelector((state) => state.token.value);

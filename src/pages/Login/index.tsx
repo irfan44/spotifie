@@ -35,7 +35,7 @@ const Login = () => {
             <Button
               title="Login with Spotify"
               type="button"
-              primary
+              variant="tertiary"
               handleOnClick={handleLogin}
             />
           </div>

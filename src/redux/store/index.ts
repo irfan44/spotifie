@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import modalSlice from 'redux/slice/modalSlice';
 import selectedTrackSlice from '../slice/selectedTrackSlice';
 import selectedTrackUriSlice from '../slice/selectedTrackUriSlice';
 import tokenSlice from '../slice/tokenSlice';
@@ -10,6 +11,7 @@ const store = configureStore({
     userProfile: userProfileSlice,
     selectedTrackUri: selectedTrackUriSlice,
     selectedTrack: selectedTrackSlice,
+    modal: modalSlice,
   },
 });
 

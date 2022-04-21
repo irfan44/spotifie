@@ -1,11 +1,15 @@
+import Modal from 'components/common/Modal';
+import { useAppSelector } from 'redux/hooks';
 import AppRouter from '../routes';
 import SideMenu from '../components/navigation/SideMenu';
 import SelectedTrackList from '../components/navigation/SelectedTrackList';
 import TopBar from '../components/navigation/TopBar';
 
 const Main = () => {
+  const isModalOpen = useAppSelector((state) => state.modal.value.isOpen);
   return (
     <div className="container mx-auto">
+      {isModalOpen && <Modal />}
       <div className="h-screen">
         <div>
           <TopBar />

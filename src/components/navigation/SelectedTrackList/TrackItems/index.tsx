@@ -22,6 +22,7 @@ const TrackItems = ({ artistName, trackTitle, handleDeleteTrack }: Props) => {
         </div>
         <div className="flex w-1/4 justify-center">
           <IconButton
+            id="delete-track"
             icon={<MdDelete />}
             title="Remove from list"
             type="button"

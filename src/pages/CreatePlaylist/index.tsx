@@ -1,17 +1,21 @@
 import { ChangeEventHandler, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../services/hooks';
+import { openModal } from 'redux/slice/modalSlice';
+import Error from 'types/error';
+import { resetToken } from 'redux/slice/tokenSlice';
+import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import postCreatePlaylist from '../../api/postCreatePlaylist';
 import CreateForm from '../../components/CreatePlaylist/CreatePlaylistForm';
 import TrackCard from '../../components/TrackCard';
 import {
   clearSelectedTrack,
   removeSelectedTrack,
-} from '../../services/slice/selectedTrackSlice';
+} from '../../redux/slice/selectedTrackSlice';
 import {
   clearSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../services/slice/selectedTrackUriSlice';
+} from '../../redux/slice/selectedTrackUriSlice';
 import Tracks from '../../types/tracks';
 import postAddItemsToPlaylist from '../../api/postAddItemToPlaylist';
 import Container from '../../components/layouts/Container';
@@ -39,6 +43,38 @@ const CreatePlaylist = () => {
     }
   };
 
+  const handleFetchError = (error: Error) => {
+    const errorMessage = error.response.data.error.message;
+
+    switch (error.response.status) {
+      case 401:
+        dispatch(
+          openModal({
+            status: 'error',
+            message: errorMessage,
+          })
+        );
+        dispatch(resetToken());
+        dispatch(resetUserProfile());
+        navigate('/login');
+        break;
+      case 403:
+        dispatch(
+          openModal({
+            status: 'error',
+            message: errorMessage,
+          })
+        );
+        dispatch(resetToken());
+        dispatch(resetUserProfile());
+        navigate('/login');
+        break;
+      default:
+        dispatch(openModal('error'));
+        break;
+    }
+  };
+
   const handleNameInput: ChangeEventHandler<HTMLInputElement> = (event) => {
     setName(event.target.value);
     checkNameLength();
@@ -51,19 +87,17 @@ const CreatePlaylist = () => {
   const handleAddItemsToPlaylist = async (id: string) => {
     if (id !== '' && token !== null) {
       try {
-        const response = await postAddItemsToPlaylist(
-          id,
-          selectedTrackUri,
-          token
-        );
-        console.log(response);
+        await postAddItemsToPlaylist(id, selectedTrackUri, token);
         dispatch(clearSelectedTrackUri());
         dispatch(clearSelectedTrack());
       } catch (error) {
-        alert(error);
+        const errorResponse = error as Error;
+        handleFetchError(errorResponse);
       }
     } else {
-      alert(id);
+      dispatch(
+        openModal({ status: 'error', message: 'Cannot find playlist ID' })
+      );
     }
   };
 
@@ -74,11 +108,20 @@ const CreatePlaylist = () => {
         try {
           const response = await postCreatePlaylist(userId, data, token);
           await handleAddItemsToPlaylist(response.playlistId);
+          dispatch(
+            openModal({
+              status: 'success',
+              message: 'Playlist successfully created',
+            })
+          );
         } catch (error) {
-          console.log(error);
+          const errorResponse = error as Error;
+          handleFetchError(errorResponse);
         }
       } else {
-        alert('User not logged in');
+        dispatch(
+          openModal({ status: 'error', message: 'Cannot find user ID' })
+        );
       }
     } else {
       setIsError(true);

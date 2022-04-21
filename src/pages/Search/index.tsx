@@ -1,18 +1,22 @@
 import { ChangeEventHandler, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { openModal } from 'redux/slice/modalSlice';
+import { resetToken } from 'redux/slice/tokenSlice';
+import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import Error from 'types/error';
 import getSearchTracks from '../../api/getSearchTracks';
 import Container from '../../components/layouts/Container';
 import SearchBar from '../../components/Search/SearchBar';
 import TrackCard from '../../components/TrackCard';
-import { useAppSelector, useAppDispatch } from '../../services/hooks';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import {
   insertSelectedTrack,
   removeSelectedTrack,
-} from '../../services/slice/selectedTrackSlice';
+} from '../../redux/slice/selectedTrackSlice';
 import {
   insertSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../services/slice/selectedTrackUriSlice';
+} from '../../redux/slice/selectedTrackUriSlice';
 import Tracks from '../../types/tracks';
 
 const Search = () => {
@@ -25,6 +29,38 @@ const Search = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const handleFetchError = (error: Error) => {
+    const errorMessage = error.response.data.error.message;
+
+    switch (error.response.status) {
+      case 401:
+        dispatch(
+          openModal({
+            status: 'error',
+            message: errorMessage,
+          })
+        );
+        dispatch(resetToken());
+        dispatch(resetUserProfile());
+        navigate('/login');
+        break;
+      case 403:
+        dispatch(
+          openModal({
+            status: 'error',
+            message: errorMessage,
+          })
+        );
+        dispatch(resetToken());
+        dispatch(resetUserProfile());
+        navigate('/login');
+        break;
+      default:
+        dispatch(openModal('error'));
+        break;
+    }
+  };
+
   const handleSearchInput: ChangeEventHandler<HTMLInputElement> = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -36,7 +72,8 @@ const Search = () => {
         setTracks(response);
         setIsError(false);
       } catch (error) {
-        alert(error);
+        const errorResponse = error as Error;
+        handleFetchError(errorResponse);
       }
     } else {
       setIsError(true);
