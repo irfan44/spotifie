@@ -22,32 +22,26 @@ const Modal = () => {
 
   return (
     <div className="fixed z-10 grid h-full w-full place-content-center bg-black bg-opacity-80">
-      <div className="grid h-96 w-96 place-content-center space-y-4 rounded-xl bg-white text-black">
-        <div className="mx-auto">
-          {status === 'success' ? (
-            <img
-              src="/images/modal-success.png"
-              alt="Success"
-              width={300}
-              height={300}
+      <div className="grid place-content-center space-y-4 rounded-xl bg-white text-black lg:h-96 lg:w-96">
+        <div className="flex w-72 flex-col items-center space-y-4 p-5">
+          <div>
+            {status === 'success' ? (
+              <img src="/images/modal-success.png" alt="Success" />
+            ) : (
+              <img src="/images/modal-error.png" alt="Error" />
+            )}
+          </div>
+          <div>
+            <p className="text-center">{handleMessage()}</p>
+          </div>
+          <div>
+            <Button
+              title="Close"
+              type="button"
+              variant="tertiary"
+              handleOnClick={handleCloseModal}
             />
-          ) : (
-            <img
-              src="/images/modal-error.png"
-              alt="Error"
-              width={300}
-              height={300}
-            />
-          )}
-        </div>
-        <p className="text-center">{handleMessage()}</p>
-        <div className="mx-auto">
-          <Button
-            title="Close"
-            type="button"
-            variant="tertiary"
-            handleOnClick={handleCloseModal}
-          />
+          </div>
         </div>
       </div>
     </div>

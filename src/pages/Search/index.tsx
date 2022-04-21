@@ -7,7 +7,7 @@ import Error from 'types/error';
 import isLogin from 'utils/isLogin';
 import getSearchTracks from '../../api/getSearchTracks';
 import Container from '../../components/layouts/Container';
-import SearchBar from '../../components/Search/SearchBar';
+import SearchBar from '../../components/SearchBar';
 import TrackCard from '../../components/TrackCard';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import {

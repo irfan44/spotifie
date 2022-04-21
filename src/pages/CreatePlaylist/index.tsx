@@ -7,7 +7,7 @@ import { resetUserProfile } from 'redux/slice/userProfileSlice';
 import isLogin from 'utils/isLogin';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import postCreatePlaylist from '../../api/postCreatePlaylist';
-import CreateForm from '../../components/CreatePlaylist/CreatePlaylistForm';
+import CreateForm from '../../components/CreatePlaylistForm';
 import TrackCard from '../../components/TrackCard';
 import {
   clearSelectedTrack,
@@ -149,7 +149,7 @@ const CreatePlaylist = () => {
         <h4>Create Playlist</h4>
       </div>
       <div className="space-y-2">
-        <div className="w-2/3">
+        <div className="lg:w-2/3">
           <CreateForm
             name={name}
             desc={desc}

@@ -7,7 +7,7 @@ import isLogin from 'utils/isLogin';
 import Error from '../../types/error';
 import getUserPlaylists from '../../api/getUserPlaylists';
 import Container from '../../components/layouts/Container';
-import PlaylistsCard from '../../components/Playlists/PlaylistsCard';
+import PlaylistsCard from '../../components/PlaylistsCard';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 type Playlist = {

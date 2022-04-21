@@ -1,7 +1,7 @@
 import { ChangeEventHandler, FormEventHandler } from 'react';
-import Button from '../../common/Button';
-import Input from '../../common/Input';
-import TextArea from '../../common/TextArea';
+import Button from '../common/Button';
+import Input from '../common/Input';
+import TextArea from '../common/TextArea';
 
 type Props = {
   name: string;
