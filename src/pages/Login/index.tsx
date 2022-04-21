@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import Button from '../../components/common/Button';
-import getFullUrl from '../../utils/getFullUrl';
+import Button from 'components/common/Button';
+import getFullUrl from 'utils/getFullUrl';
 
 const Login = () => {
   const endpointUrl = 'https://accounts.spotify.com/authorize';
@@ -26,7 +26,7 @@ const Login = () => {
     <div className="mx-auto max-w-6xl px-4">
       <div className="flex h-screen flex-col">
         <div className="py-4">
-          <h2 className="leading-tight">Spotifie</h2>
+          <h2 className="leading-tight text-green-500">Spotifie</h2>
         </div>
         <div className="flex grow flex-col justify-center text-center">
           <div className="space-y-4">

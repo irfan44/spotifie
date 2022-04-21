@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react';
+import getRecommendedTracks from 'api/getRecommendedTracks';
+import Container from 'components/layouts/Container';
+import TrackCard from 'components/TrackCard';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { openModal } from 'redux/slice/modalSlice';
-import { resetUserProfile } from 'redux/slice/userProfileSlice';
-import { resetToken } from 'redux/slice/tokenSlice';
-import isLogin from 'utils/isLogin';
-import Error from '../../types/error';
-import getRecommendedTracks from '../../api/getRecommendedTracks';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   insertSelectedTrack,
   removeSelectedTrack,
-} from '../../redux/slice/selectedTrackSlice';
+} from 'redux/slice/selectedTrackSlice';
 import {
   insertSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../redux/slice/selectedTrackUriSlice';
-import TrackCard from '../../components/TrackCard';
-import Tracks from '../../types/tracks';
-import Container from '../../components/layouts/Container';
+} from 'redux/slice/selectedTrackUriSlice';
+import { resetToken } from 'redux/slice/tokenSlice';
+import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import Error from 'types/error';
+import Tracks from 'types/tracks';
+import isLogin from 'utils/isLogin';
 
 const Home = () => {
   const [tracks, setTracks] = useState<Tracks[]>([]);
@@ -59,7 +59,7 @@ const Home = () => {
     dispatch(insertSelectedTrack(selectedTrack));
   };
 
-  const deleteTrackFromSelectedList = (selectedTrack: Tracks) => {
+  const removeTrackFromSelectedList = (selectedTrack: Tracks) => {
     const selectedUri = selectedTrack.uri;
     dispatch(removeSelectedTrackUri(selectedUri));
     dispatch(removeSelectedTrack(selectedTrack));
@@ -76,8 +76,9 @@ const Home = () => {
           artistName={track.artistName}
           albumName={track.albumName}
           duration={track.duration}
+          externalUrl={track.externalUrl}
           handleSelectTrack={() => addTrackToSelectedList(track)}
-          handleDeleteTrack={() => deleteTrackFromSelectedList(track)}
+          handleRemoveTrack={() => removeTrackFromSelectedList(track)}
         />
       );
     });

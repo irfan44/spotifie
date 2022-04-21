@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
+import getUserPlaylists from 'api/getUserPlaylists';
+import Container from 'components/layouts/Container';
+import PlaylistsCard from 'components/PlaylistsCard';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { openModal } from 'redux/slice/modalSlice';
 import { resetToken } from 'redux/slice/tokenSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import Error from 'types/error';
 import isLogin from 'utils/isLogin';
-import Error from '../../types/error';
-import getUserPlaylists from '../../api/getUserPlaylists';
-import Container from '../../components/layouts/Container';
-import PlaylistsCard from '../../components/Playlists/PlaylistsCard';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 type Playlist = {
   playlistId: string;

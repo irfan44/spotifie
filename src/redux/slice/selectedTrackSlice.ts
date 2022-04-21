@@ -8,6 +8,7 @@ type SelectedTrack = {
   duration: string;
   artistName: string;
   albumName: string;
+  externalUrl: string;
 };
 
 const selectedTrackSlice = createSlice({

@@ -68,6 +68,7 @@ const getRecommendedTracks = async (token: string) => {
         duration,
         artistName,
         albumName: data.album.name,
+        externalUrl: data.external_urls.spotify,
       });
     });
     return tracks;

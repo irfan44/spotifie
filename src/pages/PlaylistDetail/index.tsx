@@ -1,27 +1,30 @@
-import { useEffect, useState } from 'react';
+import { MouseEventHandler, useEffect, useState } from 'react';
+import getPlaylistItems from 'api/getPlaylistItems';
+import IconButton from 'components/common/IconButton';
+import Container from 'components/layouts/Container';
+import TrackCard from 'components/TrackCard';
+import { FaSpotify } from 'react-icons/fa';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { openModal } from 'redux/slice/modalSlice';
-import { resetUserProfile } from 'redux/slice/userProfileSlice';
-import { resetToken } from 'redux/slice/tokenSlice';
-import isLogin from 'utils/isLogin';
-import Error from '../../types/error';
-import getPlaylistItems from '../../api/getPlaylistItems';
-import Container from '../../components/layouts/Container';
-import TrackCard from '../../components/TrackCard';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   insertSelectedTrack,
   removeSelectedTrack,
-} from '../../redux/slice/selectedTrackSlice';
+} from 'redux/slice/selectedTrackSlice';
 import {
   insertSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../redux/slice/selectedTrackUriSlice';
-import Tracks from '../../types/tracks';
+} from 'redux/slice/selectedTrackUriSlice';
+import { resetToken } from 'redux/slice/tokenSlice';
+import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import Error from 'types/error';
+import Tracks from 'types/tracks';
+import isLogin from 'utils/isLogin';
 
 const PlaylistDetail = () => {
   const [playlistItems, setPlaylistItems] = useState<Tracks[]>([]);
   const [playlistTitle, setPlaylistTitle] = useState('');
+  const [playlistUrl, setPlaylistUrl] = useState('');
 
   const token = useAppSelector((state) => state.token.value);
 
@@ -49,11 +52,16 @@ const PlaylistDetail = () => {
         const response = await getPlaylistItems(playlistId, token);
         setPlaylistItems(response.tracks);
         setPlaylistTitle(response.playlistName);
+        setPlaylistUrl(response.externalUrl);
       } catch (error) {
         const errorResponse = error as Error;
         handleFetchError(errorResponse);
       }
     }
+  };
+
+  const handleExternalUrl: MouseEventHandler<HTMLButtonElement> = () => {
+    window.open(playlistUrl, '_blank');
   };
 
   const addTrackToSelectedList = (selectedTrack: Tracks) => {
@@ -62,7 +70,7 @@ const PlaylistDetail = () => {
     dispatch(insertSelectedTrack(selectedTrack));
   };
 
-  const deleteTrackFromSelectedList = (selectedTrack: Tracks) => {
+  const removeTrackFromSelectedList = (selectedTrack: Tracks) => {
     const selectedUri = selectedTrack.uri;
     dispatch(removeSelectedTrackUri(selectedUri));
     dispatch(removeSelectedTrack(selectedTrack));
@@ -79,8 +87,9 @@ const PlaylistDetail = () => {
           artistName={item.artistName}
           albumName={item.albumName}
           duration={item.duration}
+          externalUrl={item.externalUrl}
           handleSelectTrack={() => addTrackToSelectedList(item)}
-          handleDeleteTrack={() => deleteTrackFromSelectedList(item)}
+          handleRemoveTrack={() => removeTrackFromSelectedList(item)}
         />
       );
     });
@@ -91,13 +100,20 @@ const PlaylistDetail = () => {
       navigate('/login');
     }
     fetchPlaylistItems();
-    document.title = `${playlistTitle} - Spotifie`;
+    document.title = `Playlist Detail - Spotifie`;
   }, []);
 
   return (
     <Container>
-      <div>
+      <div className="flex items-center space-x-2">
         <h4>{`${playlistTitle} - Playlist Detail`}</h4>
+        <IconButton
+          icon={<FaSpotify />}
+          title="Open playlist in Spotify"
+          type="button"
+          variant="add"
+          handleOnClick={handleExternalUrl}
+        />
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {renderPlaylistItems()}

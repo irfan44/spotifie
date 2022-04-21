@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
+import getUserProfile from 'api/getUserProfile';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { openModal } from 'redux/slice/modalSlice';
-import Error from '../../types/error';
-import getUserProfile from '../../api/getUserProfile';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { resetToken, setToken } from '../../redux/slice/tokenSlice';
-import {
-  resetUserProfile,
-  setUserProfile,
-} from '../../redux/slice/userProfileSlice';
+import { resetToken, setToken } from 'redux/slice/tokenSlice';
+import { resetUserProfile, setUserProfile } from 'redux/slice/userProfileSlice';
+import Error from 'types/error';
+import isLogin from 'utils/isLogin';
 
 const Callback = () => {
   const token = useAppSelector((state) => state.token.value);
@@ -76,7 +74,7 @@ const Callback = () => {
   });
 
   useEffect(() => {
-    if (token !== null && userProfile !== null) {
+    if (isLogin(token) && userProfile !== null) {
       navigate('/');
     }
   }, [token, userProfile, navigate]);

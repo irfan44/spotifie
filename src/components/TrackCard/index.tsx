@@ -1,6 +1,8 @@
 import { MouseEventHandler } from 'react';
-import { useAppSelector } from '../../redux/hooks';
-import Button from '../common/Button';
+import Button from 'components/common/Button';
+import IconButton from 'components/common/IconButton';
+import { FaSpotify } from 'react-icons/fa';
+import { useAppSelector } from 'redux/hooks';
 
 type Tracks = {
   uri: string;
@@ -8,9 +10,10 @@ type Tracks = {
   trackTitle: string;
   artistName: string;
   albumName: string;
-  duration?: string;
+  duration: string;
+  externalUrl: string;
   handleSelectTrack?: () => void;
-  handleDeleteTrack?: () => void;
+  handleRemoveTrack?: () => void;
 };
 
 const TrackCard = (props: Tracks) => {
@@ -21,8 +24,9 @@ const TrackCard = (props: Tracks) => {
     artistName,
     albumName,
     duration,
+    externalUrl,
     handleSelectTrack,
-    handleDeleteTrack,
+    handleRemoveTrack,
   } = props;
 
   const selectedTracksUri = useAppSelector(
@@ -37,12 +41,16 @@ const TrackCard = (props: Tracks) => {
     }
   };
 
-  const handleDeleteTrackFromSelectedList: MouseEventHandler<
+  const handleRemoveTrackFromSelectedList: MouseEventHandler<
     HTMLButtonElement
   > = () => {
-    if (handleDeleteTrack !== undefined) {
-      handleDeleteTrack();
+    if (handleRemoveTrack !== undefined) {
+      handleRemoveTrack();
     }
+  };
+
+  const handleExternalUrl: MouseEventHandler<HTMLButtonElement> = () => {
+    window.open(externalUrl, '_blank');
   };
 
   const checkIfSelected = () => {
@@ -54,7 +62,7 @@ const TrackCard = (props: Tracks) => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 rounded-lg bg-zinc-900 p-4">
+    <div className="grid grid-cols-2 gap-4 rounded-lg bg-zinc-900 p-4 hover:bg-zinc-800">
       <div className="my-auto">
         <img className="rounded-lg" src={imgUrl} alt={trackTitle} />
       </div>
@@ -67,13 +75,13 @@ const TrackCard = (props: Tracks) => {
           <p className="truncate">{albumName}</p>
           <p>{duration}</p>
         </div>
-        <div>
+        <div className="flex items-center space-x-2">
           {checkIfSelected() ? (
             <Button
-              title="Unselect"
+              title="Remove"
               type="button"
               variant="secondary"
-              handleOnClick={handleDeleteTrackFromSelectedList}
+              handleOnClick={handleRemoveTrackFromSelectedList}
             />
           ) : (
             <Button
@@ -83,6 +91,13 @@ const TrackCard = (props: Tracks) => {
               handleOnClick={handleAddTrackToSelectedList}
             />
           )}
+          <IconButton
+            icon={<FaSpotify />}
+            title="Open track in Spotify"
+            type="button"
+            variant="add"
+            handleOnClick={handleExternalUrl}
+          />
         </div>
       </div>
     </div>

@@ -1,16 +1,16 @@
 import { MouseEventHandler } from 'react';
+import IconButton from 'components/common/IconButton';
 import { MdDelete } from 'react-icons/md';
-import IconButton from '../../../common/IconButton';
 
 type Props = {
   artistName: string;
   trackTitle: string;
-  handleDeleteTrack: () => void;
+  handleRemoveTrack: () => void;
 };
 
-const TrackItems = ({ artistName, trackTitle, handleDeleteTrack }: Props) => {
-  const handleDeleteClick: MouseEventHandler<HTMLButtonElement> = () => {
-    handleDeleteTrack();
+const TrackItems = ({ artistName, trackTitle, handleRemoveTrack }: Props) => {
+  const handleRemoveClick: MouseEventHandler<HTMLButtonElement> = () => {
+    handleRemoveTrack();
   };
 
   return (
@@ -22,12 +22,12 @@ const TrackItems = ({ artistName, trackTitle, handleDeleteTrack }: Props) => {
         </div>
         <div className="flex w-1/4 justify-center">
           <IconButton
-            id="delete-track"
+            id="remove-track"
             icon={<MdDelete />}
             title="Remove from list"
             type="button"
             variant="remove"
-            handleOnClick={handleDeleteClick}
+            handleOnClick={handleRemoveClick}
           />
         </div>
       </div>
