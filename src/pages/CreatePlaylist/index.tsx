@@ -18,7 +18,6 @@ import {
   removeSelectedTrackUri,
 } from '../../redux/slice/selectedTrackUriSlice';
 import Tracks from '../../types/tracks';
-import postAddItemsToPlaylist from '../../api/postAddItemToPlaylist';
 import Container from '../../components/layouts/Container';
 
 const CreatePlaylist = () => {
@@ -46,33 +45,15 @@ const CreatePlaylist = () => {
 
   const handleFetchError = (error: Error) => {
     const errorMessage = error.response.data.error.message;
-    switch (error.response.status) {
-      case 401:
-        dispatch(
-          openModal({
-            status: 'error',
-            message: errorMessage,
-          })
-        );
-        dispatch(resetToken());
-        dispatch(resetUserProfile());
-        navigate('/login');
-        break;
-      case 403:
-        dispatch(
-          openModal({
-            status: 'error',
-            message: errorMessage,
-          })
-        );
-        dispatch(resetToken());
-        dispatch(resetUserProfile());
-        navigate('/login');
-        break;
-      default:
-        dispatch(openModal('error'));
-        break;
-    }
+    dispatch(
+      openModal({
+        status: 'error',
+        message: errorMessage,
+      })
+    );
+    dispatch(resetToken());
+    dispatch(resetUserProfile());
+    navigate('/login');
   };
 
   const handleNameInput: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -84,31 +65,15 @@ const CreatePlaylist = () => {
     setDesc(event.target.value);
   };
 
-  const handleAddItemsToPlaylist = async (id: string) => {
-    if (id !== '' && token !== null) {
-      try {
-        await postAddItemsToPlaylist(id, selectedTrackUri, token);
-        dispatch(clearSelectedTrackUri());
-        dispatch(clearSelectedTrack());
-      } catch (error) {
-        const errorResponse = error as Error;
-        handleFetchError(errorResponse);
-      }
-    } else {
-      dispatch(
-        openModal({ status: 'error', message: 'Cannot find playlist ID' })
-      );
-    }
-  };
-
   const handleCreatePlaylist = async () => {
     if (name.length > 10) {
       if (selectedTrackUri.length !== 0) {
         const data = { name, desc };
         if (userId !== null && token !== null) {
           try {
-            const response = await postCreatePlaylist(userId, data, token);
-            await handleAddItemsToPlaylist(response.playlistId);
+            await postCreatePlaylist(data, selectedTrackUri, token, userId);
+            dispatch(clearSelectedTrack());
+            dispatch(clearSelectedTrackUri());
             dispatch(
               openModal({
                 status: 'success',

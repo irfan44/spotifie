@@ -1,4 +1,5 @@
 import axios from 'axios';
+import postAddItemsToPlaylist from './postAddItemToPlaylist';
 
 type Data = {
   name: string;
@@ -12,9 +13,10 @@ type Response = {
 };
 
 const postCreatePlaylist = async (
-  userId: string,
   playlistData: Data,
-  token: string
+  selectedTracksUri: string[],
+  token: string,
+  userId: string
 ) => {
   const endpointURL = `https://api.spotify.com/v1/users/${userId}/playlists`;
   const bodyParams = {
@@ -24,12 +26,9 @@ const postCreatePlaylist = async (
     collaborative: false,
   };
 
-  const onSuccess = (response: Response) => {
+  const onSuccess = async (response: Response) => {
     const { data } = response;
-    return {
-      playlistId: data.id,
-      message: 'SUCCESS',
-    };
+    await postAddItemsToPlaylist(data.id, selectedTracksUri, token);
   };
 
   return axios

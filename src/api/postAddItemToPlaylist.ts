@@ -19,8 +19,6 @@ const postAddItemsToPlaylist = async (
     uris: selectedTracksUri,
   };
 
-  // const url = getFullUrl(endpointURL, bodyParams);
-
   const onSuccess = (response: Response) => {
     return {
       playlist_id: response.data.playlist_id,

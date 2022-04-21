@@ -28,33 +28,15 @@ const Playlists = () => {
 
   const handleFetchError = (error: Error) => {
     const errorMessage = error.response.data.error.message;
-    switch (error.response.status) {
-      case 401:
-        dispatch(
-          openModal({
-            status: 'error',
-            message: errorMessage,
-          })
-        );
-        dispatch(resetToken());
-        dispatch(resetUserProfile());
-        navigate('/login');
-        break;
-      case 403:
-        dispatch(
-          openModal({
-            status: 'error',
-            message: errorMessage,
-          })
-        );
-        dispatch(resetToken());
-        dispatch(resetUserProfile());
-        navigate('/login');
-        break;
-      default:
-        dispatch(openModal('error'));
-        break;
-    }
+    dispatch(
+      openModal({
+        status: 'error',
+        message: errorMessage,
+      })
+    );
+    dispatch(resetToken());
+    dispatch(resetUserProfile());
+    navigate('/login');
   };
 
   const fetchPlaylists = async () => {
