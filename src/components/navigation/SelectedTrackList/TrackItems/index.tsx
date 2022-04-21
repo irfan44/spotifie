@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
+import IconButton from 'components/common/IconButton';
 import { MdDelete } from 'react-icons/md';
-import IconButton from '../../../common/IconButton';
 
 type Props = {
   artistName: string;

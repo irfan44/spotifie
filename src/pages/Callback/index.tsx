@@ -1,15 +1,12 @@
 import { useEffect } from 'react';
+import getUserProfile from 'api/getUserProfile';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { openModal } from 'redux/slice/modalSlice';
+import { resetToken, setToken } from 'redux/slice/tokenSlice';
+import { resetUserProfile, setUserProfile } from 'redux/slice/userProfileSlice';
+import Error from 'types/error';
 import isLogin from 'utils/isLogin';
-import Error from '../../types/error';
-import getUserProfile from '../../api/getUserProfile';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { resetToken, setToken } from '../../redux/slice/tokenSlice';
-import {
-  resetUserProfile,
-  setUserProfile,
-} from '../../redux/slice/userProfileSlice';
 
 const Callback = () => {
   const token = useAppSelector((state) => state.token.value);

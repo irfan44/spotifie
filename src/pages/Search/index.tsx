@@ -1,24 +1,24 @@
 import { ChangeEventHandler, useState, useEffect } from 'react';
+import getSearchTracks from 'api/getSearchTracks';
+import Container from 'components/layouts/Container';
+import SearchBar from 'components/SearchBar';
+import TrackCard from 'components/TrackCard';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from 'redux/hooks';
 import { openModal } from 'redux/slice/modalSlice';
-import { resetToken } from 'redux/slice/tokenSlice';
-import { resetUserProfile } from 'redux/slice/userProfileSlice';
-import Error from 'types/error';
-import isLogin from 'utils/isLogin';
-import getSearchTracks from '../../api/getSearchTracks';
-import Container from '../../components/layouts/Container';
-import SearchBar from '../../components/SearchBar';
-import TrackCard from '../../components/TrackCard';
-import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import {
   insertSelectedTrack,
   removeSelectedTrack,
-} from '../../redux/slice/selectedTrackSlice';
+} from 'redux/slice/selectedTrackSlice';
 import {
   insertSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../redux/slice/selectedTrackUriSlice';
-import Tracks from '../../types/tracks';
+} from 'redux/slice/selectedTrackUriSlice';
+import { resetToken } from 'redux/slice/tokenSlice';
+import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import Error from 'types/error';
+import Tracks from 'types/tracks';
+import isLogin from 'utils/isLogin';
 
 const Search = () => {
   const [isError, setIsError] = useState(false);

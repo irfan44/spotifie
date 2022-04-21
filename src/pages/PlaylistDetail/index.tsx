@@ -1,25 +1,25 @@
 import { MouseEventHandler, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { openModal } from 'redux/slice/modalSlice';
-import { resetUserProfile } from 'redux/slice/userProfileSlice';
-import { resetToken } from 'redux/slice/tokenSlice';
-import isLogin from 'utils/isLogin';
+import getPlaylistItems from 'api/getPlaylistItems';
 import IconButton from 'components/common/IconButton';
+import Container from 'components/layouts/Container';
+import TrackCard from 'components/TrackCard';
 import { FaSpotify } from 'react-icons/fa';
-import Error from '../../types/error';
-import getPlaylistItems from '../../api/getPlaylistItems';
-import Container from '../../components/layouts/Container';
-import TrackCard from '../../components/TrackCard';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { openModal } from 'redux/slice/modalSlice';
 import {
   insertSelectedTrack,
   removeSelectedTrack,
-} from '../../redux/slice/selectedTrackSlice';
+} from 'redux/slice/selectedTrackSlice';
 import {
   insertSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../redux/slice/selectedTrackUriSlice';
-import Tracks from '../../types/tracks';
+} from 'redux/slice/selectedTrackUriSlice';
+import { resetToken } from 'redux/slice/tokenSlice';
+import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import Error from 'types/error';
+import Tracks from 'types/tracks';
+import isLogin from 'utils/isLogin';
 
 const PlaylistDetail = () => {
   const [playlistItems, setPlaylistItems] = useState<Tracks[]>([]);
@@ -109,7 +109,7 @@ const PlaylistDetail = () => {
         <h4>{`${playlistTitle} - Playlist Detail`}</h4>
         <IconButton
           icon={<FaSpotify />}
-          title="Open track in Spotify"
+          title="Open playlist in Spotify"
           type="button"
           variant="add"
           handleOnClick={handleExternalUrl}

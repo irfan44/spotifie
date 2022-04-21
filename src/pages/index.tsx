@@ -1,9 +1,9 @@
 import Modal from 'components/common/Modal';
+import SelectedTrackList from 'components/navigation/SelectedTrackList';
+import SideMenu from 'components/navigation/SideMenu';
+import TopBar from 'components/navigation/TopBar';
 import { useAppSelector } from 'redux/hooks';
-import AppRouter from '../routes';
-import SideMenu from '../components/navigation/SideMenu';
-import SelectedTrackList from '../components/navigation/SelectedTrackList';
-import TopBar from '../components/navigation/TopBar';
+import AppRouter from 'routes';
 
 const Main = () => {
   const isModalOpen = useAppSelector((state) => state.modal.value.isOpen);

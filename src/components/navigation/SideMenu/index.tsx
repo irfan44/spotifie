@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom';
 import { MdLibraryMusic, MdOutlineLibraryMusic } from 'react-icons/md';
 import {
   RiHome5Fill,
@@ -8,6 +7,7 @@ import {
   RiAddCircleFill,
   RiAddCircleLine,
 } from 'react-icons/ri';
+import { useLocation } from 'react-router-dom';
 import Menus from './Menus';
 
 const SideMenu = () => {

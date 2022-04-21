@@ -1,24 +1,24 @@
 import { ChangeEventHandler, useEffect, useState } from 'react';
+import postCreatePlaylist from 'api/postCreatePlaylist';
+import CreateForm from 'components/CreatePlaylistForm';
+import Container from 'components/layouts/Container';
+import TrackCard from 'components/TrackCard';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { openModal } from 'redux/slice/modalSlice';
-import Error from 'types/error';
-import { resetToken } from 'redux/slice/tokenSlice';
-import { resetUserProfile } from 'redux/slice/userProfileSlice';
-import isLogin from 'utils/isLogin';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import postCreatePlaylist from '../../api/postCreatePlaylist';
-import CreateForm from '../../components/CreatePlaylistForm';
-import TrackCard from '../../components/TrackCard';
 import {
   clearSelectedTrack,
   removeSelectedTrack,
-} from '../../redux/slice/selectedTrackSlice';
+} from 'redux/slice/selectedTrackSlice';
 import {
   clearSelectedTrackUri,
   removeSelectedTrackUri,
-} from '../../redux/slice/selectedTrackUriSlice';
-import Tracks from '../../types/tracks';
-import Container from '../../components/layouts/Container';
+} from 'redux/slice/selectedTrackUriSlice';
+import { resetToken } from 'redux/slice/tokenSlice';
+import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import Error from 'types/error';
+import Tracks from 'types/tracks';
+import isLogin from 'utils/isLogin';
 
 const CreatePlaylist = () => {
   const [name, setName] = useState('');

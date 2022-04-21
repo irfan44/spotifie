@@ -1,8 +1,8 @@
 import { MouseEventHandler } from 'react';
+import Button from 'components/common/Button';
+import IconButton from 'components/common/IconButton';
 import { FaSpotify } from 'react-icons/fa';
-import IconButton from '../common/IconButton';
-import { useAppSelector } from '../../redux/hooks';
-import Button from '../common/Button';
+import { useAppSelector } from 'redux/hooks';
 
 type Tracks = {
   uri: string;

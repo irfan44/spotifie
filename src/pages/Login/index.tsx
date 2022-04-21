@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import Button from '../../components/common/Button';
-import getFullUrl from '../../utils/getFullUrl';
+import Button from 'components/common/Button';
+import getFullUrl from 'utils/getFullUrl';
 
 const Login = () => {
   const endpointUrl = 'https://accounts.spotify.com/authorize';

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
+import IconButton from 'components/common/IconButton';
 import { MdClose, MdMenu, MdQueueMusic } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
-import { useAppSelector } from '../../../redux/hooks';
-import IconButton from '../../common/IconButton';
-import Profile from './Profile';
+import { useAppSelector } from 'redux/hooks';
 import SelectedTrackList from '../SelectedTrackList';
 import SideMenu from '../SideMenu';
+import Profile from './Profile';
 
 const TopBar = () => {
   const [isSelectedTrackListOpen, setIsSelectedTrackListOpen] = useState(false);

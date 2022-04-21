@@ -26,4 +26,15 @@ rules:
       [1, { extensions: ['.js', '.jsx', '.tsx'] }],
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
+    'import/order':
+      [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal'],
+          pathGroups:
+            [{ 'pattern': 'react', 'group': 'external', 'position': 'before' }],
+          pathGroupsExcludedImportTypes: ['react'],
+          alphabetize: { 'order': 'asc', 'caseInsensitive': true },
+        },
+      ],
   }
