@@ -27,35 +27,26 @@ const Callback = () => {
   };
 
   const handleFetchError = (error: Error) => {
-    const errorMessage = error.response.data.error.message;
-
-    switch (error.response.status) {
-      case 401:
-        dispatch(
-          openModal({
-            status: 'error',
-            message: errorMessage,
-          })
-        );
-        dispatch(resetToken());
-        dispatch(resetUserProfile());
-        navigate('/login');
-        break;
-      case 403:
-        dispatch(
-          openModal({
-            status: 'error',
-            message: errorMessage,
-          })
-        );
-        dispatch(resetToken());
-        dispatch(resetUserProfile());
-        navigate('/login');
-        break;
-      default:
-        dispatch(openModal('error'));
-        break;
+    if (error.response.status === 403) {
+      const errorMessage = error.response.data;
+      dispatch(
+        openModal({
+          status: 'error',
+          message: errorMessage,
+        })
+      );
+    } else {
+      const errorMessage = error.response.data.error.message;
+      dispatch(
+        openModal({
+          status: 'error',
+          message: errorMessage,
+        })
+      );
     }
+    dispatch(resetToken());
+    dispatch(resetUserProfile());
+    navigate('/login');
   };
 
   const fetchUserProfile = async () => {
