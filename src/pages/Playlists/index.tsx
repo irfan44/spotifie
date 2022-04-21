@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { openModal } from 'redux/slice/modalSlice';
 import { resetToken } from 'redux/slice/tokenSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import isLogin from 'utils/isLogin';
 import Error from '../../types/error';
 import getUserPlaylists from '../../api/getUserPlaylists';
 import Container from '../../components/layouts/Container';
@@ -85,7 +86,7 @@ const Playlists = () => {
   };
 
   useEffect(() => {
-    if (token === null) {
+    if (!isLogin(token)) {
       navigate('/login');
     }
     fetchPlaylists();

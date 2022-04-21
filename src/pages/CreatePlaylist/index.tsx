@@ -4,6 +4,7 @@ import { openModal } from 'redux/slice/modalSlice';
 import Error from 'types/error';
 import { resetToken } from 'redux/slice/tokenSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
+import isLogin from 'utils/isLogin';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import postCreatePlaylist from '../../api/postCreatePlaylist';
 import CreateForm from '../../components/CreatePlaylist/CreatePlaylistForm';
@@ -172,7 +173,7 @@ const CreatePlaylist = () => {
   };
 
   useEffect(() => {
-    if (token === null) {
+    if (!isLogin(token)) {
       navigate('/login');
     }
     document.title = 'Create Playlist - Spotifie';

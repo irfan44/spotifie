@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { openModal } from 'redux/slice/modalSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
 import { resetToken } from 'redux/slice/tokenSlice';
+import isLogin from 'utils/isLogin';
 import Error from '../../types/error';
 import getPlaylistItems from '../../api/getPlaylistItems';
 import Container from '../../components/layouts/Container';
@@ -105,10 +106,11 @@ const PlaylistDetail = () => {
   };
 
   useEffect(() => {
-    if (token === null) {
+    if (!isLogin(token)) {
       navigate('/login');
     }
     fetchPlaylistItems();
+    document.title = `${playlistTitle} - Spotifie`;
   }, []);
 
   return (

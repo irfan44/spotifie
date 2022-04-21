@@ -4,6 +4,7 @@ import { openModal } from 'redux/slice/modalSlice';
 import { resetToken } from 'redux/slice/tokenSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
 import Error from 'types/error';
+import isLogin from 'utils/isLogin';
 import getSearchTracks from '../../api/getSearchTracks';
 import Container from '../../components/layouts/Container';
 import SearchBar from '../../components/Search/SearchBar';
@@ -116,10 +117,10 @@ const Search = () => {
   };
 
   useEffect(() => {
-    if (token === null) {
+    if (!isLogin(token)) {
       navigate('/login');
     }
-    document.title = 'Home - Spotifie';
+    document.title = 'Search - Spotifie';
   });
 
   return (

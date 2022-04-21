@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { openModal } from 'redux/slice/modalSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
 import { resetToken } from 'redux/slice/tokenSlice';
+import isLogin from 'utils/isLogin';
 import Error from '../../types/error';
 import getRecommendedTracks from '../../api/getRecommendedTracks';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -102,7 +103,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (token === null) {
+    if (!isLogin(token)) {
       navigate('/login');
     }
     fetchRecommendedTracks();
