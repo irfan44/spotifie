@@ -1,12 +1,12 @@
+import Callback from 'pages/Callback';
+import CreatePlaylist from 'pages/CreatePlaylist';
+import Home from 'pages/Home';
+import Login from 'pages/Login';
 import Logout from 'pages/Logout';
+import PlaylistDetail from 'pages/PlaylistDetail';
+import Playlists from 'pages/Playlists';
+import Search from 'pages/Search';
 import { Routes, Route } from 'react-router-dom';
-import Callback from '../pages/Callback';
-import CreatePlaylist from '../pages/CreatePlaylist';
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-import PlaylistDetail from '../pages/PlaylistDetail';
-import Playlists from '../pages/Playlists';
-import Search from '../pages/Search';
 import PrivateRoute from './PrivateRoute';
 
 const AppRouter = () => {

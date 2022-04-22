@@ -1,8 +1,8 @@
 import axios from 'axios';
-import Tracks from '../types/tracks';
-import convertTrackDuration from '../utils/convertTrackDuration';
-import getFullUrl from '../utils/getFullUrl';
-import joinArtistName from '../utils/joinArtistName';
+import Tracks from 'types/tracks';
+import convertTrackDuration from 'utils/convertTrackDuration';
+import getFullUrl from 'utils/getFullUrl';
+import joinArtistName from 'utils/joinArtistName';
 
 type Image = {
   width: number;
