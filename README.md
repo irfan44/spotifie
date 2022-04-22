@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <a href="https://github.com/irfan44/generasi-gigih-homework">
+    <!-- Please provide path to your logo here -->
+    <!-- <img src="docs/images/logo.svg" alt="Logo" width="100" height="100"> -->
+    Spotifie
+  </a>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- <div align="center">
+  Spotifie
+  <br />
+  <a href="#about"><strong>Explore the screenshots »</strong></a>
+  <br />
+</div> -->
 
-## Available Scripts
+<details open="open">
+<summary>Table of Contents</summary>
 
-In the project directory, you can run:
+- [About](#about)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  <!-- - [Usage](#usage) -->
+- [Feedback](#feedback)
 
-### `npm start`
+</details>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## About
 
-### `npm test`
+Spotifie is a web application for creating a playlist based on the songs you've selected before. Spotifie implements the Spotify API and connected to your spotify account to search for tracks, create & see your playlist, add tracks to your playlist, etc.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Features
 
-### `npm run build`
+1. Login with your spotify account
+2. Show recommended tracks based on selected genres
+3. Search for tracks
+4. Create playlist
+5. Add tracks to your playlist
+6. See all of your playlist
+7. See contents of your playlist
+8. See your account profile picture
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- <details>
+<summary>Screenshots</summary>
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> **[?]**
+> Please provide your screenshots here.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+|                               Home Page                               |                               Login Page                               |
+| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| <img src="docs/images/screenshot.png" title="Home Page" width="100%"> | <img src="docs/images/screenshot.png" title="Login Page" width="100%"> |
 
-### `npm run eject`
+</details> -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Built With
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. [Create React App](https://create-react-app.dev/) to initialize the project.
+2. Written in [Typescript](https://www.typescriptlang.org/)
+3. [Tailwind CSS](https://tailwindcss.com/) for building UI
+4. [React Redux](https://react-redux.js.org/) for state management
+5. [React Router](https://reactrouter.com/) for routing
+6. [Axios](https://github.com/axios/axios), for making API calls
+7. [Jest](https://jestjs.io/), for testing
+8. [MSW](https://mswjs.io/), for creating API mock
+9. Deployed on [Vercel](https://vercel.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
 
-## Learn More
+1. Spotify account (Free/Premium)
+2. Setting up Spotify Application in [Spotify Developer Dashboard ](https://developer.spotify.com/dashboard/applications)
+3. NodeJS installed in your machine
+4. Git
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone repo to your local machine. After it finished, open the folder and install project dependencies. You can do this from your command line/terminal :
 
-### Code Splitting
+```bash
+# Clone this repository
+$ git clone https://github.com/irfan44/generasi-gigih-homework.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Go to repository folder
+$ cd generasi-gigih-homework
 
-### Analyzing the Bundle Size
+# Install dependencies
+$ yarn
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Insert your spotify key to `REACT_APP_SPOTIFY_CLIENT_ID` and redirect to `http://localhost:3000/callback/` for `REACT_APP_SPOTIFY_REDIRECT_URI`. Make sure that you've added the redirect URI to your application in Spotify Developer Dashboard
 
-### Making a Progressive Web App
+```bash
+# .env example
+REACT_APP_SPOTIFY_CLIENT_ID=9090asdasdczsda9a10ak12eqws12smx
+REACT_APP_SPOTIFY_REDIRECT_URI=http://localhost:3000/callback/
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Run the app
 
-### Advanced Configuration
+```bash
+$ yarn start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Open `http://localhost:3000` to view the app in your browser
 
-### Deployment
+<!-- ## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+> **[?]**
+> How does one go about using it?
+> Provide various use cases and code examples here. -->
 
-### `npm run build` fails to minify
+## Feedback
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Reach out to the maintainer at one of the following places:
+
+- [GitHub issues](https://github.com/irfan44/generasi-gigih-homework/issues/new)
+- Contact options listed on [this GitHub profile](https://github.com/irfan44)

@@ -18,7 +18,6 @@ import { resetToken } from 'redux/slice/tokenSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
 import Error from 'types/error';
 import Tracks from 'types/tracks';
-import isLogin from 'utils/isLogin';
 
 const CreatePlaylist = () => {
   const [name, setName] = useState('');
@@ -138,9 +137,6 @@ const CreatePlaylist = () => {
   };
 
   useEffect(() => {
-    if (!isLogin(token)) {
-      navigate('/login');
-    }
     document.title = 'Create Playlist - Spotifie';
   });
 

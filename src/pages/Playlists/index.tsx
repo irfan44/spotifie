@@ -8,7 +8,6 @@ import { openModal } from 'redux/slice/modalSlice';
 import { resetToken } from 'redux/slice/tokenSlice';
 import { resetUserProfile } from 'redux/slice/userProfileSlice';
 import Error from 'types/error';
-import isLogin from 'utils/isLogin';
 
 type Playlist = {
   playlistId: string;
@@ -67,9 +66,6 @@ const Playlists = () => {
   };
 
   useEffect(() => {
-    if (!isLogin(token)) {
-      navigate('/login');
-    }
     fetchPlaylists();
     document.title = 'Playlists - Spotifie';
   }, []);
