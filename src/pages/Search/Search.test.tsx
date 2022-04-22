@@ -10,6 +10,20 @@ import store from 'redux/store';
 import Search from '.';
 
 describe('Search function test', () => {
+  test('Component should render', () => {
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Search />
+        </BrowserRouter>
+      </Provider>
+    );
+
+    expect(screen.getByRole('heading')).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+
   test('Fetch search result #1', async () => {
     const query = 'first track';
     const token = {
