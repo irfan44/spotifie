@@ -1,6 +1,5 @@
 <h1 align="center">
   <a href="https://github.com/irfan44/generasi-gigih-homework">
-    <!-- Please provide path to your logo here -->
     <img src="docs/images/logo.png" alt="Logo">
   </a>
 </h1>
@@ -110,10 +109,10 @@ $ yarn start
 ### Creating and add tracks playlist
 
 1. Login to Spotifie using your spotify account
-2. In home page, you can select tracks that are recommended. Also you can see your account profile picture and display name in the top bar. You can click on the profile button to see your account profile in Spotify.
+2. In home page, you can select tracks that are recommended. Also you can see your account profile picture and display name in the top bar. You can click on the profile button to see your account profile in Spotify. In mobile view, you can use the hamburger menu to access the side menu that you use to navigate between pages.
 3. Selected tracks will appear in the selected track list bar. You can select multiple tracks and remove tracks accordingly using the trash button. In mobile view, you can access this bar by clicking on the menu located in the top bar.
 4. In search page, you can search for tracks that you wanted to select. Selected track will also appear in the selected track list bar.
-5. In create playlist page, you will see all of your selected tracks and you can input a name for your playlist. You can also add a description for your playlist. Note that you can only create playlist with at least one track and input atlest 10 digits for your playlist name.
+5. In create playlist page, you will see all of your selected tracks and you can input a name for your playlist. You can also add a description for your playlist. Note that you can only create playlist with at least one track and input at least 10 digits for your playlist name.
 6. In your playlist page, you can see all of your playlist and if you click on your playlist, you will see all of the tracks inside of your playlist in the playlist detail page.
 7. In every track card and playlist details, you can see the Spotify logo. If you click on it, it will open the track or playlist in Spotify with one click.
 8. If you finished creating playlist, you can click on the logout menu to go back to login page.
